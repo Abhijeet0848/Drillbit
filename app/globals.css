@@ -33,6 +33,13 @@
   
   --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   --border-radius: 16px;
+  --sidebar-width: 260px;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --sidebar-width: 0px;
+  }
 }
 
 [data-theme='dark'] {
