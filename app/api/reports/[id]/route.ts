@@ -4,10 +4,10 @@ import Report from '@/lib/models/Report';
 
 export async function GET(
   request: NextRequest, 
-  { params }: { params: Promise<{ id: string }> }
+  { params }: { params: { id: string } }
 ) {
   try {
-    const { id } = await params;
+    const { id } = params;
     await connectToDatabase();
     
     const report = await Report.findById(id);
@@ -22,10 +22,10 @@ export async function GET(
 
 export async function PUT(
   request: NextRequest, 
-  { params }: { params: Promise<{ id: string }> }
+  { params }: { params: { id: string } }
 ) {
   try {
-    const { id } = await params;
+    const { id } = params;
     const body = await request.json();
     await connectToDatabase();
     
