@@ -2,12 +2,16 @@ import { NextRequest, NextResponse } from 'next/server';
 import connectToDatabase from '@/lib/mongodb';
 import Report from '@/lib/models/Report';
 
+interface RouteContext {
+  params: Promise<{ id: string }>;
+}
+
 export async function GET(
   request: NextRequest, 
-  { params }: { params: { id: string } }
+  context: RouteContext
 ) {
   try {
-    const { id } = params;
+    const { id } = await context.params;
     await connectToDatabase();
     
     const report = await Report.findById(id);
@@ -22,10 +26,10 @@ export async function GET(
 
 export async function PUT(
   request: NextRequest, 
-  { params }: { params: { id: string } }
+  context: RouteContext
 ) {
   try {
-    const { id } = params;
+    const { id } = await context.params;
     const body = await request.json();
     await connectToDatabase();
     
