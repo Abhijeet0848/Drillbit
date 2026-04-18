@@ -41,8 +41,20 @@ function calculateAIHeuristics(text: string): number {
   return Math.max(0, Math.min(100, aiScore));
 }
 
+const RATE_LIMIT_MS = 3000; // 3 seconds between requests
+const ipCache = new Map<string, number>();
+
 export async function POST(request: Request) {
   try {
+    const ip = request.headers.get('x-forwarded-for') || 'local';
+    const now = Date.now();
+    const lastRequest = ipCache.get(ip);
+    
+    if (lastRequest && (now - lastRequest) < RATE_LIMIT_MS) {
+      return NextResponse.json({ error: 'Too many requests. Please wait.' }, { status: 429 });
+    }
+    ipCache.set(ip, now);
+
     const { text } = await request.json();
     
     if (!text || text.trim().length === 0) {

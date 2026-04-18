@@ -7,6 +7,19 @@ import crypto from 'crypto';
 export async function POST(request: Request) {
   try {
     const { name, email, institution, password } = await request.json();
+
+    // 1. Manual Validation
+    if (!name || name.trim().length < 2) {
+      return NextResponse.json({ error: 'Name must be at least 2 characters' }, { status: 400 });
+    }
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!email || !emailRegex.test(email)) {
+      return NextResponse.json({ error: 'Invalid email format' }, { status: 400 });
+    }
+    if (!password || password.length < 6) {
+      return NextResponse.json({ error: 'Password must be at least 6 characters' }, { status: 400 });
+    }
+
     await connectToDatabase();
 
     const existingUser = await User.findOne({ email });

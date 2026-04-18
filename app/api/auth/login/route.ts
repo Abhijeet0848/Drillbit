@@ -7,6 +7,16 @@ import crypto from 'crypto';
 export async function POST(request: Request) {
   try {
     const { email, password } = await request.json();
+
+    // 1. Manual Validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!email || !emailRegex.test(email)) {
+      return NextResponse.json({ error: 'Invalid email format' }, { status: 400 });
+    }
+    if (!password) {
+      return NextResponse.json({ error: 'Password is required' }, { status: 400 });
+    }
+
     await connectToDatabase();
 
     const passwordHash = crypto.createHash('sha256').update(password).digest('hex');
