@@ -1,0 +1,9 @@
+.next
+node_modules
+out
+build
+.env.local
+.git
+test-mammoth.js
+CLAUDE.md
+*.log
