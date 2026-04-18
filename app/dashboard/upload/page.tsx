@@ -263,7 +263,6 @@ function TabButton({ active, label, icon, onClick }: { active: boolean, label: s
     <button onClick={onClick} style={{
       padding: '0.85rem 1.75rem',
       borderRadius: '14px',
-      border: 'none',
       background: active ? 'var(--primary)' : 'var(--bg-card)',
       color: active ? 'white' : 'var(--text-muted)',
       fontWeight: 600,
