@@ -9,6 +9,7 @@
     "check-env": "node -e \"if(!process.env.MONGODB_URI) { console.error('FATAL: MONGODB_URI is missing'); process.exit(1); }\""
   },
   "dependencies": {
+    "lucide-react": "^1.34.0",
     "mammoth": "^1.12.0",
     "mongodb": "^7.1.1",
     "mongoose": "^9.4.1",

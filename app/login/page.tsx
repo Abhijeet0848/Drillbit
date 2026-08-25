@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
+import { Eye, EyeOff } from 'lucide-react';
 
 export default function LoginPage() {
   const router = useRouter();
@@ -42,9 +43,9 @@ export default function LoginPage() {
 
   return (
     <div className="container" style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-      <div className="glass-panel animate-fade" style={{ padding: '3rem', width: '100%', maxWidth: '450px' }}>
-        <h1 style={{ fontSize: '2.5rem', marginBottom: '1.5rem', textAlign: 'center', fontWeight: 800 }} className="gradient-text">Welcome Back</h1>
-        {error && <div style={{ color: 'var(--error)', background: 'hsla(350, 80%, 55%, 0.1)', border: '1px solid var(--error)', padding: '0.75rem', borderRadius: '8px', marginBottom: '1rem', fontSize: '0.9rem', fontWeight: 600 }}>{error}</div>}
+      <div className="glass-panel animate-fade" style={{ padding: '2.5rem', width: '100%', maxWidth: '400px' }}>
+        <h1 style={{ fontSize: '2rem', marginBottom: '1.5rem', textAlign: 'center', fontWeight: 700, color: 'var(--text-main)' }}>Welcome Back</h1>
+        {error && <div style={{ color: 'var(--error)', background: 'rgba(239, 68, 68, 0.1)', border: '1px solid rgba(239, 68, 68, 0.2)', padding: '0.75rem', borderRadius: '6px', marginBottom: '1rem', fontSize: '0.9rem', fontWeight: 500 }}>{error}</div>}
         <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
           <div>
             <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 600, color: 'var(--text-main)' }}>Email</label>
@@ -60,14 +61,14 @@ export default function LoginPage() {
                 style={{ position: 'absolute', right: '0.75rem', top: '50%', transform: 'translateY(-50%)', background: 'none', border: 'none', cursor: 'pointer', color: 'var(--text-muted)' }}
                 aria-label={showPassword ? "Hide password" : "Show password"}
               >
-                {showPassword ? '👁️‍🗨️' : '👁️'}
+                {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
               </button>
             </div>
           </div>
-          <button type="submit" disabled={loading} className="btn btn-primary hover-lift glow-active" style={{ width: '100%', padding: '1rem', opacity: loading ? 0.7 : 1, fontSize: '1.1rem' }}>{loading ? 'Logging in...' : 'Login to Dashboard'}</button>
+          <button type="submit" disabled={loading} className="btn btn-primary hover-lift" style={{ width: '100%', padding: '0.85rem', opacity: loading ? 0.7 : 1, fontSize: '1rem' }}>{loading ? 'Logging in...' : 'Login to Dashboard'}</button>
         </form>
         <p style={{ textAlign: 'center', marginTop: '1.5rem', color: 'var(--text-muted)' }}>
-          Don't have an account? <Link href="/signup" style={{ color: 'var(--accent)', fontWeight: 600, textDecoration: 'none' }}>Sign Up</Link>
+          Don't have an account? <Link href="/signup" style={{ color: 'var(--primary)', fontWeight: 600, textDecoration: 'none' }}>Sign Up</Link>
         </p>
         <p style={{ textAlign: 'center', marginTop: '1rem' }}>
            <Link href="/" style={{ color: 'var(--text-muted)', fontSize: '0.9rem', textDecoration: 'none' }}>&larr; Back to Home</Link>

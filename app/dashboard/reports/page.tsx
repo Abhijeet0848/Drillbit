@@ -3,6 +3,7 @@ import Report from '@/lib/models/Report';
 import { cookies } from 'next/headers';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
+import { Plus, Inbox, Filter } from 'lucide-react';
 
 export default async function ReportsArchivePage() {
   const cookieStore = await cookies();
@@ -20,11 +21,11 @@ export default async function ReportsArchivePage() {
     <div className="animate-fade">
       <header className="page-header" style={{ marginBottom: '3rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
         <div>
-          <h1 style={{ fontSize: '2.5rem', marginBottom: '0.25rem' }} className="gradient-text">Reports Archive</h1>
+          <h1 style={{ fontSize: '2rem', marginBottom: '0.25rem', color: 'var(--text-main)' }}>Reports Archive</h1>
           <p style={{ color: 'var(--text-muted)', fontSize: '1.05rem' }}>Manage and search through your entire analysis history.</p>
         </div>
         <Link href="/dashboard/upload" className="btn btn-primary hover-lift">
-          <span style={{ fontSize: '1.2rem' }}>+</span> New Scan
+          <Plus size={18} /> New Scan
         </Link>
       </header>
 
@@ -43,7 +44,9 @@ export default async function ReportsArchivePage() {
             <option>Rejected</option>
             <option>Scanning</option>
           </select>
-          <button className="btn btn-primary">Filter</button>
+          <button className="btn btn-outline" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            <Filter size={18} /> Filter
+          </button>
         </div>
       </div>
 
@@ -78,7 +81,7 @@ export default async function ReportsArchivePage() {
                   </span>
                 </td>
                 <td style={{ padding: '1.25rem 1rem' }}>
-                  <span style={{ color: report.aiScore > 20 ? 'var(--accent)' : 'var(--text-muted)', fontWeight: 700, fontSize: '1.1rem' }}>
+                  <span style={{ color: report.aiScore > 20 ? 'var(--text-main)' : 'var(--text-muted)', fontWeight: 700, fontSize: '1.1rem' }}>
                     {report.aiScore}%
                   </span>
                 </td>
@@ -117,7 +120,7 @@ export default async function ReportsArchivePage() {
               </div>
               <div>
                 <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', textTransform: 'uppercase', marginBottom: '0.25rem', fontWeight: 600 }}>AI Content</div>
-                <div style={{ color: report.aiScore > 20 ? 'var(--accent)' : 'var(--text-muted)', fontWeight: 800, fontSize: '1.3rem' }}>{report.aiScore}%</div>
+                <div style={{ color: report.aiScore > 20 ? 'var(--text-main)' : 'var(--text-muted)', fontWeight: 800, fontSize: '1.3rem' }}>{report.aiScore}%</div>
               </div>
             </div>
 
@@ -133,7 +136,9 @@ export default async function ReportsArchivePage() {
 
       {reports.length === 0 && (
         <div className="glass-panel" style={{ padding: '5rem', textAlign: 'center', color: 'var(--text-muted)' }}>
-           <div style={{ fontSize: '4rem', marginBottom: '1.5rem', opacity: 0.5 }}>🗃️</div>
+           <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '1.5rem', opacity: 0.5 }}>
+             <Inbox size={64} />
+           </div>
            <div style={{ fontSize: '1.25rem', fontWeight: 600, color: 'var(--text-main)' }}>No historical data found</div>
            <div style={{ marginTop: '0.5rem' }}>Start your first scan today to see reports here!</div>
         </div>
@@ -141,7 +146,7 @@ export default async function ReportsArchivePage() {
 
       <style dangerouslySetInnerHTML={{ __html: `
         .table-row-hover:hover {
-          background: hsla(var(--primary-h), var(--primary-s), 50%, 0.05);
+          background: var(--primary-light);
         }
         @media (max-width: 768px) {
           .hide-mobile { display: none !important; }

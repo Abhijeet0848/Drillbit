@@ -9,11 +9,11 @@ export default function Footer() {
           marginBottom: '4rem'
         }}>
           <div>
-            <div style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-              <div style={{ background: 'linear-gradient(135deg, var(--primary), var(--accent))', width: '20px', height: '20px', borderRadius: '4px' }}></div>
-              <span className="gradient-text">DrillBit</span>
+            <div style={{ fontSize: '1.4rem', fontWeight: 700, marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.75rem', color: 'var(--text-main)' }}>
+              <div style={{ background: 'var(--primary)', width: '20px', height: '20px', borderRadius: '4px' }}></div>
+              <span>DrillBit</span>
             </div>
-            <p style={{ color: 'var(--text-muted)', lineHeight: '1.6' }}>
+            <p style={{ color: 'var(--text-muted)', lineHeight: '1.5', fontSize: '0.95rem' }}>
               Driving academic integrity through advanced AI and plagiarism detection technology.
             </p>
           </div>

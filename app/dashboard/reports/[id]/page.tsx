@@ -1,6 +1,7 @@
 import connectToDatabase from '@/lib/mongodb';
 import Report from '@/lib/models/Report';
 import { notFound } from 'next/navigation';
+import { AlertTriangle, Share2 } from 'lucide-react';
 import RewriteButton from './RewriteButton';
 import PrintButton from './PrintButton';
 
@@ -30,8 +31,8 @@ export default async function ReportPage({ params }: { params: Promise<{ id: str
     <div className="animate-fade" style={{ display: 'flex', flexDirection: 'column', gap: '2rem', height: '100%' }}>
       <header className="no-print" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem', marginBottom: '1rem' }}>
         <div>
-          <h1 style={{ fontSize: '2rem', marginBottom: '0.4rem' }} className="gradient-text">Analysis Certificate</h1>
-          <h2 style={{ fontSize: '1.25rem', marginBottom: '0.4rem', color: 'var(--text-main)' }}>{report.filename}</h2>
+          <h1 style={{ fontSize: '2rem', marginBottom: '0.4rem', color: 'var(--text-main)' }}>Analysis Certificate</h1>
+          <h2 style={{ fontSize: '1.25rem', marginBottom: '0.4rem', color: 'var(--text-main)', fontWeight: 500 }}>{report.filename}</h2>
           <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem' }}>
             <span style={{ fontWeight: 600, color: 'var(--primary)' }}>ID:</span> {report._id.slice(-8).toUpperCase()} <span style={{ opacity: 0.5 }}>|</span> <span style={{ fontWeight: 600, color: 'var(--primary)' }}>Scanned:</span> {new Date(report.createdAt).toLocaleDateString()}
           </p>
@@ -41,7 +42,9 @@ export default async function ReportPage({ params }: { params: Promise<{ id: str
             <RewriteButton reportId={report._id.toString()} />
           )}
           <PrintButton />
-          <button className="btn btn-outline hover-lift">Share Result</button>
+          <button className="btn btn-outline hover-lift" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            <Share2 size={16} /> Share Result
+          </button>
         </div>
       </header>
 
@@ -54,9 +57,9 @@ export default async function ReportPage({ params }: { params: Promise<{ id: str
           display: 'flex',
           alignItems: 'center',
           gap: '1.25rem',
-          boxShadow: '0 4px 20px -5px hsla(350, 80%, 55%, 0.2)'
+          boxShadow: 'var(--shadow-sm)'
         }}>
-          <div style={{ fontSize: '2rem', filter: 'drop-shadow(0 0 5px var(--error))' }}>⚠️</div>
+          <div style={{ color: 'var(--error)' }}><AlertTriangle size={32} /></div>
           <div>
             <div style={{ fontWeight: 800, color: 'var(--error)', fontSize: '1.1rem', marginBottom: '0.25rem' }}>CRITICAL: Similarity Alert ({simIndex}%)</div>
             <div style={{ color: 'var(--text-main)' }}>This document exceeds the 15% threshold and will be flagged for rejection by JNU standards.</div>

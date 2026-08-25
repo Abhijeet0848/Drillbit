@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { FileText, Files, PenTool, UploadCloud, Rocket, File, FileType } from 'lucide-react';
 
 type UploadType = 'single' | 'bulk' | 'text';
 
@@ -140,15 +141,15 @@ export default function UploadPage() {
   return (
     <div className="animate-fade">
       <header className="page-header" style={{ marginBottom: '3rem' }}>
-        <h1 style={{ fontSize: '2.5rem', marginBottom: '0.4rem' }} className="gradient-text">Platinum Scan</h1>
+        <h1 style={{ fontSize: '2rem', marginBottom: '0.4rem', color: 'var(--text-main)' }}>New Scan</h1>
         <p style={{ color: 'var(--text-muted)', fontSize: '1.05rem' }}>Choose your method for multi-platform analysis and integrity verification.</p>
       </header>
 
       {/* Tabs */}
       <div className="tab-container" style={{ display: 'flex', gap: '1rem', marginBottom: '2.5rem', flexWrap: 'wrap' }}>
-        <TabButton active={activeTab === 'single'} onClick={() => { setActiveTab('single'); setFiles([]); }} label="Single Analysis" icon="📄" />
-        <TabButton active={activeTab === 'bulk'} onClick={() => { setActiveTab('bulk'); setFiles([]); }} label="Bulk Engine" icon="📚" />
-        <TabButton active={activeTab === 'text'} onClick={() => { setActiveTab('text'); setFiles([]); }} label="Secure Paste" icon="✍️" />
+        <TabButton active={activeTab === 'single'} onClick={() => { setActiveTab('single'); setFiles([]); }} label="Single Analysis" icon={<FileText size={18} />} />
+        <TabButton active={activeTab === 'bulk'} onClick={() => { setActiveTab('bulk'); setFiles([]); }} label="Bulk Engine" icon={<Files size={18} />} />
+        <TabButton active={activeTab === 'text'} onClick={() => { setActiveTab('text'); setFiles([]); }} label="Secure Paste" icon={<PenTool size={18} />} />
       </div>
 
       <div className="glass-panel upload-card" style={{ padding: '3rem' }}>
@@ -180,7 +181,9 @@ export default function UploadPage() {
                 />
               ) : (
                 <>
-                  <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>{activeTab === 'bulk' ? '📂' : '📄'}</div>
+                  <div style={{ marginBottom: '1.5rem', color: 'var(--text-muted)' }}>
+                    {activeTab === 'bulk' ? <Files size={48} /> : <File size={48} />}
+                  </div>
                   <h3 style={{ marginBottom: '0.5rem', fontSize: '1.2rem' }}>
                     {files.length > 0 ? `${files.length} document(s) loaded` : 'Drop documents here'}
                   </h3>
@@ -211,12 +214,12 @@ export default function UploadPage() {
                 </select>
               </div>
               <button 
-                className="btn btn-primary hover-lift glow-active" 
-                style={{ width: '100%', marginTop: 'auto', padding: '1.25rem', fontSize: '1.1rem' }}
+                className="btn btn-primary hover-lift" 
+                style={{ width: '100%', marginTop: 'auto', padding: '1rem', fontSize: '1rem' }}
                 onClick={startAnalysis}
                 disabled={(activeTab === 'text' && !pastedText) || (activeTab !== 'text' && files.length === 0)}
               >
-                Launch Analysis 🚀
+                <Rocket size={18} style={{ marginRight: '0.5rem' }} /> Launch Analysis
               </button>
             </div>
           </div>
@@ -235,12 +238,12 @@ export default function UploadPage() {
               <div className="progress-bar-fill" style={{ 
                 width: `${progress}%`, 
                 height: '100%', 
-                background: 'linear-gradient(90deg, var(--accent), #33e1ff)', 
+                background: 'var(--text-main)', 
                 transition: 'width 0.4s ease' 
               }}></div>
             </div>
             <div style={{ display: 'flex', justifyContent: 'space-between', color: 'var(--text-muted)', fontSize: '0.85rem', fontWeight: 600 }}>
-              <span style={{ color: 'var(--accent)' }}>Overall Progress</span>
+              <span style={{ color: 'var(--text-main)' }}>Overall Progress</span>
               <span>{progress}%</span>
             </div>
           </div>
@@ -261,21 +264,20 @@ export default function UploadPage() {
   );
 }
 
-function TabButton({ active, label, icon, onClick }: { active: boolean, label: string, icon: string, onClick: () => void }) {
+function TabButton({ active, label, icon, onClick }: { active: boolean, label: string, icon: React.ReactNode, onClick: () => void }) {
   return (
     <button className="hover-lift" onClick={onClick} style={{
-      padding: '1rem 2rem',
-      borderRadius: '16px',
-      background: active ? 'linear-gradient(135deg, var(--primary), var(--accent))' : 'var(--bg-surface)',
-      color: active ? 'white' : 'var(--text-muted)',
-      fontWeight: 700,
+      padding: '0.75rem 1.5rem',
+      borderRadius: '8px',
+      background: active ? 'var(--primary-light)' : 'var(--bg-surface)',
+      color: active ? 'var(--text-main)' : 'var(--text-muted)',
+      fontWeight: 600,
       cursor: 'pointer',
       display: 'flex',
       alignItems: 'center',
       gap: '0.75rem',
-      boxShadow: active ? '0 8px 20px -5px var(--accent-glow)' : 'none',
       transition: 'var(--transition)',
-      border: active ? '1px solid transparent' : '1px solid var(--glass-border)'
+      border: '1px solid var(--glass-border)'
     }}>
       <span>{icon}</span>
       {label}

@@ -4,6 +4,7 @@ import { redirect } from 'next/navigation';
 import connectToDatabase from '@/lib/mongodb';
 import User from '@/lib/models/User';
 import Report from '@/lib/models/Report';
+import { FileText, Scale, Bot, HardDrive, Inbox, Clock, Plus } from 'lucide-react';
 import LogoutButton from '@/app/components/LogoutButton';
 
 export default async function DashboardPage() {
@@ -27,22 +28,22 @@ export default async function DashboardPage() {
   const user = JSON.parse(JSON.stringify(userData));
 
   const stats = [
-    { label: "Total Scans", value: reports.length.toString(), icon: "📄" },
-    { label: "Plagiarism Avg", value: "12%", icon: "⚖️" },
-    { label: "AI Content Avg", value: "8%", icon: "🤖" },
-    { label: "Storage Used", value: "4.2 GB", icon: "💾" },
+    { label: "Total Scans", value: reports.length.toString(), icon: <FileText size={24} /> },
+    { label: "Plagiarism Avg", value: "12%", icon: <Scale size={24} /> },
+    { label: "AI Content Avg", value: "8%", icon: <Bot size={24} /> },
+    { label: "Storage Used", value: "4.2 GB", icon: <HardDrive size={24} /> },
   ];
 
   return (
     <div className="animate-fade">
       <header style={{ marginBottom: '3rem', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: '1rem' }}>
         <div>
-          <h1 style={{ fontSize: '2.5rem', marginBottom: '0.25rem' }} className="gradient-text">Overview</h1>
-          <p style={{ color: 'var(--text-muted)', fontSize: '1.05rem' }}>Welcome back, <span style={{ color: 'var(--text-main)', fontWeight: 600 }}>{user.name}</span>. Here's what's happening today.</p>
+          <h1 style={{ fontSize: '2rem', marginBottom: '0.25rem', color: 'var(--text-main)' }}>Overview</h1>
+          <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem' }}>Welcome back, <span style={{ color: 'var(--text-main)', fontWeight: 600 }}>{user.name}</span>. Here's what's happening today.</p>
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
           <Link href="/dashboard/upload" className="btn btn-primary hover-lift">
-            <span style={{ fontSize: '1.2rem' }}>+</span> New Scan
+            <Plus size={18} /> New Scan
           </Link>
         </div>
       </header>
@@ -56,19 +57,20 @@ export default async function DashboardPage() {
         marginBottom: '3.5rem'
       }}>
         {stats.map((s, i) => (
-          <div key={i} className="glass hover-lift" style={{ padding: '1.75rem', display: 'flex', flexDirection: 'column', position: 'relative', overflow: 'hidden' }}>
-            <div style={{ position: 'absolute', top: '-20px', right: '-20px', fontSize: '6rem', opacity: 0.04, transform: 'rotate(15deg)' }}>{s.icon}</div>
-            <div style={{ fontSize: '1.8rem', marginBottom: '1.25rem', display: 'inline-block', filter: 'drop-shadow(0 4px 6px rgba(0,0,0,0.1))' }}>{s.icon}</div>
-            <div style={{ color: 'var(--text-muted)', fontSize: '0.95rem', fontWeight: 500, marginBottom: '0.5rem', textTransform: 'uppercase', letterSpacing: '1px' }}>{s.label}</div>
-            <div style={{ fontSize: '2.25rem', fontWeight: 800, color: 'var(--text-main)' }}>{s.value}</div>
+          <div key={i} className="glass-panel hover-lift" style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '1rem' }}>
+              <div style={{ color: 'var(--text-muted)', fontSize: '0.85rem', fontWeight: 500 }}>{s.label}</div>
+              <div style={{ color: 'var(--text-muted)' }}>{s.icon}</div>
+            </div>
+            <div style={{ fontSize: '2rem', fontWeight: 700, color: 'var(--text-main)' }}>{s.value}</div>
           </div>
         ))}
       </div>
 
       {/* Recent Activity */}
       <div className="glass-panel">
-        <h2 style={{ fontSize: '1.4rem', marginBottom: '1.75rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-          <span style={{ color: 'var(--accent)' }}>✦</span> Recent Reports
+        <h2 style={{ fontSize: '1.25rem', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-main)' }}>
+          <Clock size={18} /> Recent Reports
         </h2>
         <div style={{ overflowX: 'auto' }}>
           <table style={{ width: '100%', borderCollapse: 'collapse', whiteSpace: 'nowrap' }}>
@@ -94,10 +96,12 @@ export default async function DashboardPage() {
               ))}
               {reports.length === 0 && (
                 <tr>
-                  <td colSpan={5} style={{ padding: '3rem', textAlign: 'center', color: 'var(--text-muted)' }}>
-                    <div style={{ fontSize: '3rem', marginBottom: '1rem', opacity: 0.5 }}>📂</div>
-                    <div style={{ fontSize: '1.1rem', fontWeight: 500 }}>No reports found</div>
-                    <div style={{ fontSize: '0.9rem', marginTop: '0.5rem' }}>Create a new scan to get started.</div>
+                  <td colSpan={5} style={{ padding: '4rem 2rem', textAlign: 'center', color: 'var(--text-muted)' }}>
+                    <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '1rem', opacity: 0.5 }}>
+                      <Inbox size={48} />
+                    </div>
+                    <div style={{ fontSize: '1rem', fontWeight: 500, color: 'var(--text-main)' }}>No reports found</div>
+                    <div style={{ fontSize: '0.9rem', marginTop: '0.25rem' }}>Create a new scan to get started.</div>
                   </td>
                 </tr>
               )}
@@ -140,7 +144,7 @@ function ReportRow({ id, name, type, score, status }: { id: string, name: string
       </td>
       <style>{`
         .table-row-hover:hover {
-          background: hsla(var(--primary-h), var(--primary-s), 50%, 0.05);
+          background: var(--primary-light);
         }
       `}</style>
     </tr>

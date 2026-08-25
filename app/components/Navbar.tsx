@@ -19,15 +19,15 @@ export default async function Navbar() {
       border: '1px solid var(--glass-border)',
       boxShadow: 'var(--shadow-lg)'
     }}>
-      <div className="logo" style={{ fontSize: '1.6rem', fontWeight: 800, display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-        <div style={{ background: 'linear-gradient(135deg, var(--primary), var(--accent))', width: '20px', height: '20px', borderRadius: '4px', boxShadow: '0 0 15px var(--accent-glow)' }}></div>
-        <span className="gradient-text">DrillBit</span>
+      <div className="logo" style={{ fontSize: '1.4rem', fontWeight: 700, display: 'flex', alignItems: 'center', gap: '0.75rem', color: 'var(--text-main)' }}>
+        <div style={{ background: 'var(--primary)', width: '20px', height: '20px', borderRadius: '4px' }}></div>
+        <span>DrillBit</span>
       </div>
       <div style={{ display: 'flex', gap: '2rem', alignItems: 'center' }}>
-        <Link href="/" className="hover-lift" style={{ fontWeight: 600, color: 'var(--text-main)' }}>Home</Link>
-        <Link href="#features" className="hover-lift" style={{ fontWeight: 600, color: 'var(--text-main)' }}>Features</Link>
-        <Link href="#products" className="hover-lift" style={{ fontWeight: 600, color: 'var(--text-main)' }}>Products</Link>
-        <Link href="#contact" className="hover-lift" style={{ fontWeight: 600, color: 'var(--text-main)' }}>Contact</Link>
+        <Link href="/" className="hover-lift" style={{ fontWeight: 500, color: 'var(--text-muted)' }}>Home</Link>
+        <Link href="#features" className="hover-lift" style={{ fontWeight: 500, color: 'var(--text-muted)' }}>Features</Link>
+        <Link href="#products" className="hover-lift" style={{ fontWeight: 500, color: 'var(--text-muted)' }}>Products</Link>
+        <Link href="#contact" className="hover-lift" style={{ fontWeight: 500, color: 'var(--text-muted)' }}>Contact</Link>
         {session ? (
           <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
             <Link href="/dashboard" className="btn btn-primary hover-lift" style={{ textDecoration: 'none' }}>Dashboard</Link>
