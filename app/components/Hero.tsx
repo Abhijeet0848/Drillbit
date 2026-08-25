@@ -1,5 +1,6 @@
-import Image from 'next/image';
 import Link from 'next/link';
+import Radar from './Radar';
+
 export default function Hero() {
   return (
     <section className="container" style={{ padding: '8rem 2rem', display: 'flex', alignItems: 'center', gap: '4rem' }}>
@@ -16,12 +17,14 @@ export default function Hero() {
           <Link href="/dashboard" className="btn btn-outline hover-lift" style={{ padding: '0.75rem 1.5rem', textDecoration: 'none', fontSize: '1rem' }}>View Demo</Link>
         </div>
       </div>
-      <div style={{ flex: 1, position: 'relative' }} className="animate-fade">
-        <div className="glass-panel" style={{ padding: '0.5rem', overflow: 'hidden', boxShadow: 'var(--shadow-lg)', background: 'var(--bg-surface)' }}>
-          <img 
-            src="/images/hero.png" 
-            alt="DrillBit Dashboard" 
-            style={{ width: '100%', borderRadius: '6px', display: 'block', border: '1px solid var(--glass-border)' }}
+      <div style={{ flex: 1, position: 'relative', height: '400px' }} className="animate-fade">
+        <div className="glass-panel" style={{ width: '100%', height: '100%', overflow: 'hidden', boxShadow: 'var(--shadow-lg)', background: '#09090b', borderRadius: '16px', border: '1px solid var(--glass-border)', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+          <Radar 
+            color="#3b82f6" 
+            backgroundColor="#09090b" 
+            speed={1.5}
+            scale={0.8}
+            enableMouseInteraction={true}
           />
         </div>
       </div>
