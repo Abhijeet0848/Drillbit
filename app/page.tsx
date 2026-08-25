@@ -2,19 +2,17 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Features from './components/Features';
 import Footer from './components/Footer';
-import MagicRings from './components/MagicRings';
+import Radar from './components/Radar';
 
 export default function Home() {
   return (
     <main style={{ position: 'relative', overflow: 'hidden' }}>
-      <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100vh', zIndex: -1, pointerEvents: 'none', background: 'var(--bg-main)' }}>
-        <MagicRings 
+      <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100vh', zIndex: -1, pointerEvents: 'none' }}>
+        <Radar 
           color="#3b82f6" 
-          colorTwo="#8b5cf6" 
-          opacity={0.8} 
-          speed={0.5} 
-          baseRadius={0.4} 
-          lineThickness={4}
+          speed={0.8}
+          scale={1.5}
+          enableMouseInteraction={true}
         />
       </div>
       
