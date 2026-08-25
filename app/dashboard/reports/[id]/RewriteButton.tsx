@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { Wand2 } from 'lucide-react';
 
 export default function RewriteButton({ reportId }: { reportId: string }) {
   const [isRewriting, setIsRewriting] = useState(false);
@@ -37,18 +38,17 @@ export default function RewriteButton({ reportId }: { reportId: string }) {
     <button 
       onClick={handleRewrite}
       disabled={isRewriting}
-      className="btn"
+      className={`btn btn-primary ${!isRewriting && 'hover-lift'}`}
       style={{ 
-        background: isRewriting ? '#ddd' : 'var(--primary)', 
-        color: isRewriting ? '#666' : 'white',
-        border: 'none',
         display: 'flex',
         alignItems: 'center',
         gap: '0.5rem',
-        cursor: isRewriting ? 'not-allowed' : 'pointer'
+        cursor: isRewriting ? 'not-allowed' : 'pointer',
+        opacity: isRewriting ? 0.7 : 1
       }}
     >
-      {isRewriting ? '✨ Neutralizing Plagiarism...' : '✨ Make Plagiarism Free'}
+      <Wand2 size={16} />
+      {isRewriting ? 'Neutralizing Plagiarism...' : 'Make Plagiarism Free'}
     </button>
   );
 }
