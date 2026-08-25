@@ -2,9 +2,9 @@
 
 :root {
   /* Enterprise SaaS Color Palette (Light Mode) */
-  --bg-main: #fafafa;
-  --bg-card: #ffffff;
-  --bg-surface: #ffffff;
+  --bg-main: #f4f4f5; /* zinc-100 */
+  --bg-card: #fafafa; /* zinc-50 */
+  --bg-surface: #fafafa; /* zinc-50 */
   
   --text-main: #09090b;
   --text-muted: #71717a;
