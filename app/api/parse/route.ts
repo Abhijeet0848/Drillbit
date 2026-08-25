@@ -1,5 +1,4 @@
 import { NextResponse } from 'next/server';
-import pdfParse from 'pdf-parse';
 import mammoth from 'mammoth';
 
 export async function POST(request: Request) {
@@ -19,7 +18,9 @@ export async function POST(request: Request) {
     
     try {
       if (filename.endsWith('.pdf')) {
-        const data = await pdfParse(buffer);
+        const pdfParseLib = require('pdf-parse');
+        const parseFn = typeof pdfParseLib === 'function' ? pdfParseLib : (pdfParseLib.PDFParse || pdfParseLib.default);
+        const data = await parseFn(buffer);
         text = data.text;
       } else if (filename.endsWith('.docx')) {
         // Extracting raw text from the .docx zip structure
