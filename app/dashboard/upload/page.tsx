@@ -28,7 +28,8 @@ export default function UploadPage() {
         const parseData = await parseRes.json();
         content = parseData.text;
       } else {
-        content = `[Extraction Limited] Fallback for ${file.name}. Raw extraction failed.`;
+        const errorData = await parseRes.json().catch(() => ({}));
+        content = `[Extraction Error] Failed to parse ${file.name}. Reason: ${errorData.error || 'Raw extraction failed'}. ${errorData.details || ''}`;
       }
 
       // 2. Analyze
