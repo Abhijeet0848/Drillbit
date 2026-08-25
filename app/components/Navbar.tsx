@@ -31,15 +31,15 @@ export default async function Navbar() {
         <Link href="#contact" className="hover-lift" style={{ fontWeight: 500, color: 'var(--text-muted)' }}>Contact</Link>
         {session ? (
           <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+            <ThemeToggle compact={true} />
             <Link href="/dashboard" className="btn btn-primary hover-lift" style={{ textDecoration: 'none' }}>Dashboard</Link>
             <LogoutButton style={{ background: 'var(--bg-surface)', color: 'var(--text-main)' }} />
-            <ThemeToggle compact={true} />
           </div>
         ) : (
           <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+            <ThemeToggle compact={true} />
             <Link href="/login" className="btn btn-outline hover-lift" style={{ textDecoration: 'none' }}>Login</Link>
             <Link href="/signup" className="btn btn-primary hover-lift" style={{ textDecoration: 'none' }}>Sign Up</Link>
-            <ThemeToggle compact={true} />
           </div>
         )}
       </div>
