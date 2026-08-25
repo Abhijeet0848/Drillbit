@@ -178,10 +178,10 @@ export default async function ReportPage({ params }: { params: Promise<{ id: str
         </div>
       </div>
 
-      <style jsx global>{`
+      <style dangerouslySetInnerHTML={{ __html: `
         @media (max-width: 992px) {
           .report-grid {
-            gridTemplateColumns: 1fr !important;
+            grid-template-columns: 1fr !important;
             display: flex !important;
             flex-direction: column !important;
           }
@@ -224,7 +224,7 @@ export default async function ReportPage({ params }: { params: Promise<{ id: str
             font-size: 0.95rem !important;
           }
         }
-      `}</style>
+      `}} />
 
       <style dangerouslySetInnerHTML={{ __html: `
         @media print {

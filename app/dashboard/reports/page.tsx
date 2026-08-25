@@ -147,14 +147,14 @@ export default async function ReportsArchivePage() {
         </div>
       )}
 
-      <style jsx>{`
+      <style dangerouslySetInnerHTML={{ __html: `
         @media (max-width: 768px) {
           .hide-mobile { display: none !important; }
           .mobile-only { display: flex !important; }
           .page-header h1 { font-size: 1.5rem !important; }
           .filter-bar { gap: 0.75rem !important; }
         }
-      `}</style>
+      `}} />
     </div>
   );
 }
