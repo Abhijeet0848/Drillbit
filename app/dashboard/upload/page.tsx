@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { FileText, Files, PenTool, UploadCloud, Rocket, File, FileType } from 'lucide-react';
+import TappingHand from '@/app/components/TappingHand';
 
 type UploadType = 'single' | 'bulk' | 'text';
 
@@ -182,8 +183,8 @@ export default function UploadPage() {
                 />
               ) : (
                 <>
-                  <div style={{ marginBottom: '1.5rem', color: 'var(--text-muted)' }}>
-                    {activeTab === 'bulk' ? <Files size={48} /> : <File size={48} />}
+                  <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '1.5rem', marginRight: '40px' }}>
+                    <TappingHand />
                   </div>
                   <h3 style={{ marginBottom: '0.5rem', fontSize: '1.2rem' }}>
                     {files.length > 0 ? `${files.length} document(s) loaded` : 'Drop documents here'}
