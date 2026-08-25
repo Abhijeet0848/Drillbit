@@ -117,10 +117,9 @@ export default function Radar({
     let targetMouse = [0.5, 0.5];
 
     function handleMouseMove(e) {
-      const rect = gl.canvas.getBoundingClientRect();
       targetMouse = [
-        (e.clientX - rect.left) / rect.width,
-        1.0 - (e.clientY - rect.top) / rect.height
+        e.clientX / window.innerWidth,
+        1.0 - (e.clientY / window.innerHeight)
       ];
     }
 
@@ -167,8 +166,8 @@ export default function Radar({
     container.appendChild(gl.canvas);
 
     if (enableMouseInteraction) {
-      gl.canvas.addEventListener('mousemove', handleMouseMove);
-      gl.canvas.addEventListener('mouseleave', handleMouseLeave);
+      window.addEventListener('mousemove', handleMouseMove);
+      window.addEventListener('mouseleave', handleMouseLeave);
     }
 
     let animationFrameId;
@@ -195,8 +194,8 @@ export default function Radar({
       cancelAnimationFrame(animationFrameId);
       window.removeEventListener('resize', resize);
       if (enableMouseInteraction) {
-        gl.canvas.removeEventListener('mousemove', handleMouseMove);
-        gl.canvas.removeEventListener('mouseleave', handleMouseLeave);
+        window.removeEventListener('mousemove', handleMouseMove);
+        window.removeEventListener('mouseleave', handleMouseLeave);
       }
       container.removeChild(gl.canvas);
       gl.getExtension('WEBGL_lose_context')?.loseContext();
