@@ -11,9 +11,10 @@ export default function Home() {
         <MagicRings 
           color="#3b82f6" 
           colorTwo="#8b5cf6" 
-          opacity={0.3} 
+          opacity={0.8} 
           speed={0.5} 
           baseRadius={0.4} 
+          lineThickness={4}
         />
       </div>
       

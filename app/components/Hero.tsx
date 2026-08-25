@@ -18,10 +18,9 @@ export default function Hero() {
         </div>
       </div>
       <div style={{ flex: 1, position: 'relative', height: '400px' }} className="animate-fade">
-        <div className="glass-panel" style={{ width: '100%', height: '100%', overflow: 'hidden', boxShadow: 'var(--shadow-lg)', background: '#09090b', borderRadius: '16px', border: '1px solid var(--glass-border)', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+        <div className="glass-panel" style={{ width: '100%', height: '100%', overflow: 'hidden', boxShadow: 'var(--shadow-lg)', background: 'var(--bg-surface)', borderRadius: '16px', border: '1px solid var(--glass-border)', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
           <Radar 
             color="#3b82f6" 
-            backgroundColor="#09090b" 
             speed={1.5}
             scale={0.8}
             enableMouseInteraction={true}

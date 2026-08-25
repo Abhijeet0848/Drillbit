@@ -80,10 +80,9 @@ void main() {
   float fade = smoothstep(1.05, 0.85, dist) * pow(max(1.0 - dist, 0.0), uFalloff);
 
   float intensity = max((ringGlow + spokeGlow + sweepBeam) * fade * uBrightness, 0.0);
-  vec3 col = uColor * intensity + uBgColor;
+  vec3 col = uColor * intensity;
 
-  float alpha = clamp(length(col), 0.0, 1.0);
-  gl_FragColor = vec4(col, alpha);
+  gl_FragColor = vec4(col, intensity);
 }
 `;
 

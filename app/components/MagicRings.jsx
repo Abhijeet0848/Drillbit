@@ -61,7 +61,9 @@ void main() {
   c *= 1.0 + uBurst * 2.0;
   float n = fract(sin(dot(gl_FragCoord.xy + uTime * 100.0, vec2(12.9898, 78.233))) * 43758.5453);
   c += (n - 0.5) * uNoiseAmount;
-  gl_FragColor = vec4(c, max(c.r, max(c.g, c.b)) * uOpacity);
+  
+  float alpha = clamp(length(c) * 1.5, 0.0, 1.0) * uOpacity;
+  gl_FragColor = vec4(c, alpha);
 }
 `;
 
