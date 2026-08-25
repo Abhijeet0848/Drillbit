@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { cookies } from 'next/headers';
 import LogoutButton from './LogoutButton';
+import ThemeToggle from './ThemeToggle';
 
 export default async function Navbar() {
   const cookieStore = await cookies();
@@ -32,11 +33,13 @@ export default async function Navbar() {
           <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
             <Link href="/dashboard" className="btn btn-primary hover-lift" style={{ textDecoration: 'none' }}>Dashboard</Link>
             <LogoutButton style={{ background: 'var(--bg-surface)', color: 'var(--text-main)' }} />
+            <ThemeToggle compact={true} />
           </div>
         ) : (
-          <div style={{ display: 'flex', gap: '1rem' }}>
+          <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
             <Link href="/login" className="btn btn-outline hover-lift" style={{ textDecoration: 'none' }}>Login</Link>
             <Link href="/signup" className="btn btn-primary hover-lift" style={{ textDecoration: 'none' }}>Sign Up</Link>
+            <ThemeToggle compact={true} />
           </div>
         )}
       </div>

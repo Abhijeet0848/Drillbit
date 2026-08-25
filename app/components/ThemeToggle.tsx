@@ -1,37 +1,44 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { useTheme } from 'next-themes';
+import { useEffect, useState } from 'react';
+import { Moon, Sun } from 'lucide-react';
 
-export default function ThemeToggle() {
-  const [theme, setTheme] = useState('light');
+export default function ThemeToggle({ compact = false }: { compact?: boolean }) {
+  const { theme, setTheme, resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem('drillbit-theme') || 'light';
-    setTheme(savedTheme);
-    document.documentElement.setAttribute('data-theme', savedTheme);
+    setMounted(true);
   }, []);
 
-  const toggleTheme = () => {
-    const newTheme = theme === 'light' ? 'dark' : 'light';
-    setTheme(newTheme);
-    document.documentElement.setAttribute('data-theme', newTheme);
-    localStorage.setItem('drillbit-theme', newTheme);
-  };
+  if (!mounted) {
+    return <button className="btn" style={{ width: compact ? '40px' : '100%', height: compact ? '40px' : 'auto', padding: compact ? '0' : '0.5rem', justifyContent: 'center', background: 'var(--bg-surface)', border: '1px solid var(--glass-border)', color: 'var(--text-main)', borderRadius: compact ? '50%' : 'var(--border-radius)' }} />;
+  }
+
+  const isDark = resolvedTheme === 'dark';
 
   return (
     <button 
-      onClick={toggleTheme}
-      className="btn"
+      onClick={() => setTheme(isDark ? 'light' : 'dark')}
+      className="btn hover-lift"
+      title="Toggle Theme"
       style={{ 
-        width: '100%', 
+        width: compact ? '40px' : '100%', 
+        height: compact ? '40px' : 'auto',
+        padding: compact ? '0' : '0.5rem',
         justifyContent: 'center', 
+        alignItems: 'center',
+        display: 'flex',
+        gap: compact ? '0' : '0.5rem',
         background: 'var(--bg-surface)', 
         border: '1px solid var(--glass-border)',
-        marginTop: '1rem',
         color: 'var(--text-main)',
-        fontSize: '0.85rem'
+        fontSize: '0.85rem',
+        borderRadius: compact ? '50%' : 'var(--border-radius)'
       }}
     >
-      {theme === 'light' ? '🌙 Night Mode' : '☀️ Day Mode'}
+      {isDark ? <Sun size={18} /> : <Moon size={18} />}
+      {!compact && (isDark ? 'Light Mode' : 'Dark Mode')}
     </button>
   );
 }

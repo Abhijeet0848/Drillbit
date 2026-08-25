@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { Eye, EyeOff } from 'lucide-react';
 import '../AuthForm.css';
+import ThemeToggle from '../components/ThemeToggle';
 
 export default function SignupPage() {
   const router = useRouter();
@@ -43,7 +44,10 @@ export default function SignupPage() {
   };
 
   return (
-    <div className="container" style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '2rem 0' }}>
+    <div className="container" style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '2rem 0', position: 'relative' }}>
+      <div style={{ position: 'absolute', top: '1.5rem', right: '2rem', zIndex: 10 }}>
+        <ThemeToggle compact={true} />
+      </div>
       <div className="form-container animate-fade">
         <h1 style={{ fontSize: '2rem', marginBottom: '1.5rem', textAlign: 'center', fontWeight: 700, color: 'var(--text-main)' }}>Create Account</h1>
         {error && <div style={{ color: 'var(--error)', background: 'rgba(239, 68, 68, 0.1)', border: '1px solid rgba(239, 68, 68, 0.2)', padding: '0.75rem', borderRadius: '6px', marginBottom: '1rem', fontSize: '0.9rem', fontWeight: 500 }}>{error}</div>}
