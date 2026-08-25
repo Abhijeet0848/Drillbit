@@ -25,7 +25,7 @@ export default function Features() {
   ];
 
   return (
-    <section id="features" style={{ padding: '8rem 2rem', background: 'var(--bg-main)' }}>
+    <section id="features" style={{ padding: '8rem 2rem', background: 'transparent' }}>
       <div className="container">
         <div style={{ textAlign: 'center', marginBottom: '5rem' }}>
           <h2 style={{ fontSize: '3rem', marginBottom: '1rem', fontWeight: 700, letterSpacing: '-0.03em' }}>Unparalleled Features</h2>
@@ -46,7 +46,7 @@ export default function Features() {
             }}>
               <div style={{ 
                 marginBottom: '1.5rem',
-                background: 'var(--bg-main)',
+                background: 'transparent',
                 width: '60px',
                 height: '60px',
                 display: 'flex',
