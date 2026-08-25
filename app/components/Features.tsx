@@ -23,11 +23,11 @@ export default function Features() {
   ];
 
   return (
-    <section id="features" style={{ padding: '6rem 2rem', background: '#fff' }}>
+    <section id="features" style={{ padding: '8rem 2rem', background: 'var(--bg-main)' }}>
       <div className="container">
-        <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
-          <h2 style={{ fontSize: '3rem', marginBottom: '1rem' }}>Unparalleled <span className="gradient-text">Features</span></h2>
-          <p style={{ color: 'var(--text-muted)', fontSize: '1.2rem' }}>State-of-the-art tools designed for the modern academic landscape.</p>
+        <div style={{ textAlign: 'center', marginBottom: '5rem' }}>
+          <h2 style={{ fontSize: '3.5rem', marginBottom: '1rem', fontWeight: 800 }}>Unparalleled <span className="gradient-text">Features</span></h2>
+          <p style={{ color: 'var(--text-muted)', fontSize: '1.25rem' }}>State-of-the-art tools designed for the modern academic landscape.</p>
         </div>
         <div style={{ 
           display: 'grid', 
@@ -35,24 +35,26 @@ export default function Features() {
           gap: '2rem' 
         }}>
           {features.map((f, i) => (
-            <div key={i} className="glass" style={{ 
-              padding: '2.5rem', 
-              transition: 'var(--transition)',
-              cursor: 'pointer',
-              border: '1px solid rgba(0,0,0,0.05)'
+            <div key={i} className="glass-panel hover-lift" style={{ 
+              padding: '3rem 2rem',
+              textAlign: 'center',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center'
             }}>
-              <div style={{ 
+              <div className="glow-active" style={{ 
                 fontSize: '2.5rem', 
-                marginBottom: '1.5rem',
-                background: 'var(--bg-main)',
-                width: '60px',
-                height: '60px',
+                marginBottom: '2rem',
+                background: 'linear-gradient(135deg, hsla(var(--primary-h), var(--primary-s), 50%, 0.1), hsla(var(--accent-h), var(--accent-s), 50%, 0.1))',
+                width: '80px',
+                height: '80px',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                borderRadius: '12px'
+                borderRadius: '24px',
+                border: '1px solid hsla(var(--primary-h), var(--primary-s), 50%, 0.2)'
               }}>{f.icon}</div>
-              <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>{f.title}</h3>
+              <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem', color: 'var(--text-main)' }}>{f.title}</h3>
               <p style={{ color: 'var(--text-muted)', lineHeight: '1.6' }}>{f.desc}</p>
             </div>
           ))}

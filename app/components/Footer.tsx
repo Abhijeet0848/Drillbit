@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer style={{ background: 'var(--primary)', color: 'white', padding: '4rem 2rem 2rem' }}>
+    <footer style={{ background: 'var(--bg-surface)', borderTop: '1px solid var(--glass-border)', color: 'var(--text-main)', padding: '6rem 2rem 2rem' }}>
       <div className="container">
         <div style={{ 
           display: 'grid', 
@@ -9,35 +9,36 @@ export default function Footer() {
           marginBottom: '4rem'
         }}>
           <div>
-            <div style={{ fontSize: '1.5rem', fontWeight: 800, marginBottom: '1.5rem' }}>
-              Drill<span style={{ color: 'var(--accent)' }}>Bit</span>
+            <div style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+              <div style={{ background: 'linear-gradient(135deg, var(--primary), var(--accent))', width: '20px', height: '20px', borderRadius: '4px' }}></div>
+              <span className="gradient-text">DrillBit</span>
             </div>
-            <p style={{ color: 'rgba(255,255,255,0.7)', lineHeight: '1.6' }}>
+            <p style={{ color: 'var(--text-muted)', lineHeight: '1.6' }}>
               Driving academic integrity through advanced AI and plagiarism detection technology.
             </p>
           </div>
           <div>
-            <h4 style={{ marginBottom: '1.5rem', color: 'var(--accent)' }}>Products</h4>
+            <h4 style={{ marginBottom: '1.5rem', color: 'var(--text-main)' }}>Products</h4>
             <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.8rem' }}>
-              <li><a href="#" style={{ color: 'rgba(255,255,255,0.7)' }}>Institutional Portal</a></li>
-              <li><a href="#" style={{ color: 'rgba(255,255,255,0.7)' }}>Research Checker</a></li>
-              <li><a href="#" style={{ color: 'rgba(255,255,255,0.7)' }}>API Integration</a></li>
+              <li><a href="#" style={{ color: 'var(--text-muted)', textDecoration: 'none' }} className="hover-lift">Institutional Portal</a></li>
+              <li><a href="#" style={{ color: 'var(--text-muted)', textDecoration: 'none' }} className="hover-lift">Research Checker</a></li>
+              <li><a href="#" style={{ color: 'var(--text-muted)', textDecoration: 'none' }} className="hover-lift">API Integration</a></li>
             </ul>
           </div>
           <div>
-            <h4 style={{ marginBottom: '1.5rem', color: 'var(--accent)' }}>Company</h4>
+            <h4 style={{ marginBottom: '1.5rem', color: 'var(--text-main)' }}>Company</h4>
             <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.8rem' }}>
-              <li><a href="#" style={{ color: 'rgba(255,255,255,0.7)' }}>About Us</a></li>
-              <li><a href="#" style={{ color: 'rgba(255,255,255,0.7)' }}>Contact</a></li>
-              <li><a href="#" style={{ color: 'rgba(255,255,255,0.7)' }}>Privacy Policy</a></li>
+              <li><a href="#" style={{ color: 'var(--text-muted)', textDecoration: 'none' }} className="hover-lift">About Us</a></li>
+              <li><a href="#" style={{ color: 'var(--text-muted)', textDecoration: 'none' }} className="hover-lift">Contact</a></li>
+              <li><a href="#" style={{ color: 'var(--text-muted)', textDecoration: 'none' }} className="hover-lift">Privacy Policy</a></li>
             </ul>
           </div>
         </div>
         <div style={{ 
-          borderTop: '1px solid rgba(255,255,255,0.1)', 
+          borderTop: '1px solid var(--glass-border)', 
           paddingTop: '2rem', 
           textAlign: 'center',
-          color: 'rgba(255,255,255,0.5)',
+          color: 'var(--text-muted)',
           fontSize: '0.9rem'
         }}>
           &copy; {new Date().getFullYear()} DrillBit SoftTech India. All rights reserved.

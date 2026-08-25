@@ -62,18 +62,18 @@ export default function DashboardContainer({
       {/* Sidebar */}
       <aside className={`glass sidebar ${isSidebarOpen ? 'open' : ''}`} style={{ 
         width: 'var(--sidebar-width)', 
-        margin: '1rem', 
+        margin: '1.5rem', 
         display: 'flex', 
         flexDirection: 'column',
-        padding: '1.5rem 0.75rem',
+        padding: '2rem 1rem',
         borderRadius: '24px',
         border: '1px solid var(--glass-border)',
         zIndex: 150,
         transition: 'var(--transition)'
       }}>
-        <div style={{ fontSize: '1.5rem', fontWeight: 800, marginBottom: '2.5rem', padding: '0 1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-          <div style={{ background: 'var(--accent)', width: '12px', height: '12px', borderRadius: '3px' }}></div>
-          Drill<span style={{ color: 'var(--accent)' }}>Bit</span>
+        <div style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: '3rem', padding: '0 1rem', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+          <div style={{ background: 'linear-gradient(135deg, var(--primary), var(--accent))', width: '16px', height: '16px', borderRadius: '4px', boxShadow: '0 0 15px var(--accent-glow)' }}></div>
+          <span className="gradient-text">DrillBit</span>
         </div>
         
         <nav style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem', flex: 1 }}>
@@ -87,37 +87,38 @@ export default function DashboardContainer({
           </div>
         </nav>
         
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-          <div style={{ 
-            padding: '0.75rem', 
-            background: 'var(--primary)', 
-            color: 'white', 
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginTop: '1rem' }}>
+          <div className="glass" style={{ 
+            padding: '1rem', 
+            background: 'linear-gradient(135deg, hsla(var(--primary-h), var(--primary-s), 20%, 0.5), hsla(var(--accent-h), var(--accent-s), 20%, 0.5))',
             borderRadius: '16px',
             display: 'flex',
             alignItems: 'center',
-            gap: '0.75rem'
+            gap: '1rem',
+            border: '1px solid hsla(var(--accent-h), var(--accent-s), 50%, 0.3)'
           }}>
-            <div style={{ 
-              width: '36px', 
-              height: '36px', 
-              background: 'var(--accent)', 
-              borderRadius: '10px',
+            <div className="glow-active" style={{ 
+              width: '42px', 
+              height: '42px', 
+              background: 'linear-gradient(135deg, var(--primary), var(--accent))', 
+              borderRadius: '12px',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              color: 'var(--primary)',
+              color: 'white',
               fontWeight: 800,
-              fontSize: '1rem',
-              flexShrink: 0
+              fontSize: '1.2rem',
+              flexShrink: 0,
+              boxShadow: '0 0 20px var(--accent-glow)'
             }}>
               {user.name.charAt(0).toUpperCase()}
             </div>
             <div style={{ overflow: 'hidden' }}>
-              <div style={{ fontWeight: 600, fontSize: '0.85rem', whiteSpace: 'nowrap', textOverflow: 'ellipsis', overflow: 'hidden' }}>{user.name}</div>
-              <div style={{ fontSize: '0.7rem', opacity: 0.7, whiteSpace: 'nowrap', textOverflow: 'ellipsis', overflow: 'hidden' }}>{user.institution || 'Educator'}</div>
+              <div style={{ fontWeight: 700, fontSize: '0.9rem', color: 'var(--text-main)', whiteSpace: 'nowrap', textOverflow: 'ellipsis', overflow: 'hidden' }}>{user.name}</div>
+              <div style={{ fontSize: '0.75rem', color: 'var(--accent)', fontWeight: 600, whiteSpace: 'nowrap', textOverflow: 'ellipsis', overflow: 'hidden' }}>{user.institution || 'Educator'}</div>
             </div>
           </div>
-          <LogoutButton style={{ width: '100%', padding: '0.6rem', border: '1px solid var(--glass-border)', background: 'var(--bg-surface)', borderRadius: '12px', cursor: 'pointer', fontSize: '0.85rem', color: 'var(--text-main)' }} />
+          <LogoutButton style={{ width: '100%', padding: '0.75rem', border: '1px solid var(--glass-border)', background: 'var(--bg-card)', borderRadius: '14px', cursor: 'pointer', fontSize: '0.9rem', color: 'var(--text-muted)', fontWeight: 600, transition: 'var(--transition)' }} />
         </div>
       </aside>
 
@@ -165,19 +166,20 @@ export default function DashboardContainer({
 
 function SidebarLink({ href, icon, label, active = false, onClick }: { href: string, icon: string, label: string, active?: boolean, onClick?: () => void }) {
   return (
-    <Link href={href} onClick={onClick} style={{
+    <Link href={href} onClick={onClick} className="hover-lift" style={{
       display: 'flex',
       alignItems: 'center',
-      gap: '0.75rem',
-      padding: '0.75rem 1rem',
-      borderRadius: '12px',
-      background: active ? 'hsla(var(--a-h), var(--a-s), var(--a-l), 0.1)' : 'transparent',
-      color: active ? 'var(--accent)' : 'var(--text-muted)',
-      fontWeight: active ? 600 : 500,
+      gap: '1rem',
+      padding: '0.85rem 1.25rem',
+      borderRadius: '14px',
+      background: active ? 'hsla(var(--primary-h), var(--primary-s), 50%, 0.15)' : 'transparent',
+      color: active ? 'var(--primary)' : 'var(--text-muted)',
+      fontWeight: active ? 700 : 500,
       transition: 'var(--transition)',
-      fontSize: '0.9rem'
+      fontSize: '0.95rem',
+      border: active ? '1px solid hsla(var(--primary-h), var(--primary-s), 50%, 0.2)' : '1px solid transparent'
     }}>
-      <span style={{ fontSize: '1.1rem' }}>{icon}</span>
+      <span style={{ fontSize: '1.2rem', filter: active ? 'drop-shadow(0 0 8px var(--accent-glow))' : 'none' }}>{icon}</span>
       {label}
     </Link>
   );

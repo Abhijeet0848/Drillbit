@@ -28,11 +28,12 @@ export default async function ReportPage({ params }: { params: Promise<{ id: str
 
   return (
     <div className="animate-fade" style={{ display: 'flex', flexDirection: 'column', gap: '2rem', height: '100%' }}>
-      <header className="no-print" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+      <header className="no-print" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem', marginBottom: '1rem' }}>
         <div>
-          <h1 style={{ fontSize: '1.75rem', marginBottom: '0.4rem' }}>Analysis Certificate: {report.filename}</h1>
+          <h1 style={{ fontSize: '2rem', marginBottom: '0.4rem' }} className="gradient-text">Analysis Certificate</h1>
+          <h2 style={{ fontSize: '1.25rem', marginBottom: '0.4rem', color: 'var(--text-main)' }}>{report.filename}</h2>
           <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem' }}>
-            Reference ID: {report._id.slice(-8).toUpperCase()} • Scanned: {new Date(report.createdAt).toLocaleDateString()}
+            <span style={{ fontWeight: 600, color: 'var(--primary)' }}>ID:</span> {report._id.slice(-8).toUpperCase()} <span style={{ opacity: 0.5 }}>|</span> <span style={{ fontWeight: 600, color: 'var(--primary)' }}>Scanned:</span> {new Date(report.createdAt).toLocaleDateString()}
           </p>
         </div>
         <div style={{ display: 'flex', gap: '1rem' }}>
@@ -40,99 +41,104 @@ export default async function ReportPage({ params }: { params: Promise<{ id: str
             <RewriteButton reportId={report._id.toString()} />
           )}
           <PrintButton />
-          <button className="btn" style={{ background: 'var(--bg-surface)', border: '1px solid var(--glass-border)', color: 'var(--text-main)' }}>Share Result</button>
+          <button className="btn btn-outline hover-lift">Share Result</button>
         </div>
       </header>
 
       {/* JNU Compliance Warning */}
       {simIndex > 15 && (
-        <div style={{ 
-          background: 'hsla(0, 85%, 60%, 0.1)', 
+        <div className="glass-panel" style={{ 
+          background: 'hsla(350, 80%, 55%, 0.1)', 
           border: '1px solid var(--error)', 
-          color: 'var(--error)', 
-          padding: '1.25rem 1.5rem', 
-          borderRadius: '16px', 
-          fontWeight: 600,
+          padding: '1.5rem', 
           display: 'flex',
           alignItems: 'center',
-          gap: '1rem'
+          gap: '1.25rem',
+          boxShadow: '0 4px 20px -5px hsla(350, 80%, 55%, 0.2)'
         }}>
-          <span style={{ fontSize: '1.5rem' }}>⚠️</span>
-          <span>CRITICAL: Similarity Alert ({simIndex}%). This document exceeds the 15% threshold and will be flagged for rejection by JNU standards.</span>
+          <div style={{ fontSize: '2rem', filter: 'drop-shadow(0 0 5px var(--error))' }}>⚠️</div>
+          <div>
+            <div style={{ fontWeight: 800, color: 'var(--error)', fontSize: '1.1rem', marginBottom: '0.25rem' }}>CRITICAL: Similarity Alert ({simIndex}%)</div>
+            <div style={{ color: 'var(--text-main)' }}>This document exceeds the 15% threshold and will be flagged for rejection by JNU standards.</div>
+          </div>
         </div>
       )}
 
-      <div className="report-grid" style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) 350px', gap: '2rem', flex: 1, minHeight: 0 }}>
+      <div className="report-grid animate-stagger" style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) 350px', gap: '2rem', flex: 1, minHeight: 0 }}>
         {/* Sidebar Analysis (Order 1 on mobile) */}
         <div className="no-print sidebar-stats" style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
           {/* Similarity Chart */}
-          <div className="glass" style={{ padding: '2rem 1.5rem', background: 'var(--bg-card)', textAlign: 'center', position: 'relative' }}>
-             <h3 style={{ fontSize: '0.9rem', color: 'var(--text-muted)', marginBottom: '1.5rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Similarity Score</h3>
+          <div className="glass-panel hover-lift" style={{ textAlign: 'center', position: 'relative' }}>
+             <h3 style={{ fontSize: '0.95rem', color: 'var(--text-muted)', marginBottom: '2rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Similarity Score</h3>
              <div style={{ 
-                width: '140px', 
-                height: '140px', 
+                width: '150px', 
+                height: '150px', 
                 borderRadius: '50%', 
                 background: `conic-gradient(${simIndex > 15 ? 'var(--error)' : 'var(--success)'} ${simIndex}%, var(--bg-surface) 0)`,
                 margin: '0 auto',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                position: 'relative'
+                position: 'relative',
+                boxShadow: 'inset 0 0 10px rgba(0,0,0,0.1)'
              }}>
                 <div style={{ 
-                  width: '110px', 
-                  height: '110px', 
+                  width: '120px', 
+                  height: '120px', 
                   borderRadius: '50%', 
                   background: 'var(--bg-card)',
                   display: 'flex',
                   flexDirection: 'column',
                   alignItems: 'center',
-                  justifyContent: 'center'
+                  justifyContent: 'center',
+                  boxShadow: '0 4px 12px rgba(0,0,0,0.05)'
                 }}>
-                   <span style={{ fontSize: '1.75rem', fontWeight: 800 }}>{simIndex}<small style={{ fontSize: '0.8rem' }}>%</small></span>
+                   <span style={{ fontSize: '2.5rem', fontWeight: 800, color: 'var(--text-main)' }}>{simIndex}<small style={{ fontSize: '1.2rem', color: 'var(--text-muted)' }}>%</small></span>
                 </div>
              </div>
           </div>
 
           {/* AI Score */}
-          <div className="glass" style={{ padding: '2rem 1.5rem', background: 'var(--bg-card)', textAlign: 'center' }}>
-             <h3 style={{ fontSize: '0.9rem', color: 'var(--text-muted)', marginBottom: '1.5rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>AI Confidence</h3>
+          <div className="glass-panel hover-lift" style={{ textAlign: 'center' }}>
+             <h3 style={{ fontSize: '0.95rem', color: 'var(--text-muted)', marginBottom: '2rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>AI Confidence</h3>
              <div style={{ 
-                width: '140px', 
-                height: '140px', 
+                width: '150px', 
+                height: '150px', 
                 borderRadius: '50%', 
                 background: `conic-gradient(var(--accent) ${aiScore}%, var(--bg-surface) 0)`,
                 margin: '0 auto',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                position: 'relative'
+                position: 'relative',
+                boxShadow: 'inset 0 0 10px rgba(0,0,0,0.1)'
              }}>
                 <div style={{ 
-                  width: '110px', 
-                  height: '110px', 
+                  width: '120px', 
+                  height: '120px', 
                   borderRadius: '50%', 
                   background: 'var(--bg-card)',
                   display: 'flex',
                   flexDirection: 'column',
                   alignItems: 'center',
-                  justifyContent: 'center'
+                  justifyContent: 'center',
+                  boxShadow: '0 4px 12px rgba(0,0,0,0.05)'
                 }}>
-                   <span style={{ fontSize: '1.75rem', fontWeight: 800 }}>{aiScore}<small style={{ fontSize: '0.8rem' }}>%</small></span>
+                   <span style={{ fontSize: '2.5rem', fontWeight: 800, color: 'var(--text-main)' }}>{aiScore}<small style={{ fontSize: '1.2rem', color: 'var(--text-muted)' }}>%</small></span>
                 </div>
              </div>
           </div>
 
           {/* Top Matches (Hidden or Shrunken on mobile) */}
-          <div className="glass hide-mobile" style={{ padding: '1.5rem', background: 'var(--bg-card)', flex: 1 }}>
-            <h3 style={{ fontSize: '0.9rem', color: 'var(--primary)', marginBottom: '1.25rem', fontWeight: 700 }}>Global Matches</h3>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+          <div className="glass-panel hide-mobile hover-lift" style={{ flex: 1 }}>
+            <h3 style={{ fontSize: '0.95rem', color: 'var(--primary)', marginBottom: '1.5rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em' }}>Global Matches</h3>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
               {report.topSources && report.topSources.length > 0 ? (
                 report.topSources.map((source: any, i: number) => (
                   <SourceItem key={i} rank={i + 1} url={source.url} percentage={`${source.percentage}%`} />
                 ))
               ) : (
-                <div style={{ color: 'var(--text-muted)', fontSize: '0.8rem', textAlign: 'center' }}>Secure</div>
+                <div style={{ color: 'var(--success)', fontSize: '1rem', textAlign: 'center', fontWeight: 600, padding: '2rem 0' }}>✓ Secure & Clean</div>
               )}
             </div>
           </div>
@@ -143,9 +149,11 @@ export default async function ReportPage({ params }: { params: Promise<{ id: str
           background: 'var(--bg-card)', 
           display: 'flex', 
           flexDirection: 'column',
-          minHeight: '500px',
-          borderRadius: '24px',
-          overflow: 'hidden'
+          minHeight: '600px',
+          borderRadius: 'var(--border-radius)',
+          border: '1px solid var(--glass-border)',
+          overflow: 'hidden',
+          boxShadow: 'var(--shadow-md)'
         }}>
           <div style={{ 
             padding: '1.25rem 1.5rem', 
@@ -245,16 +253,18 @@ function SourceItem({ rank, url, percentage }: { rank: number, url: string, perc
       display: 'flex', 
       justifyContent: 'space-between', 
       alignItems: 'center', 
-      padding: '1rem',
+      padding: '1.25rem',
       background: 'var(--bg-surface)',
       border: '1px solid var(--glass-border)',
-      borderRadius: '12px'
+      borderRadius: '12px',
+      transition: 'var(--transition)',
+      cursor: 'default'
     }}>
       <div style={{ overflow: 'hidden', flex: 1 }}>
-        <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)', fontWeight: 700 }}>#{rank} RANKED SOURCE</div>
-        <div style={{ fontSize: '0.85rem', fontWeight: 600, whiteSpace: 'nowrap', textOverflow: 'ellipsis', overflow: 'hidden', color: 'var(--primary)' }}>{url}</div>
+        <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', fontWeight: 700, marginBottom: '0.2rem' }}>#{rank} RANKED SOURCE</div>
+        <div style={{ fontSize: '0.9rem', fontWeight: 600, whiteSpace: 'nowrap', textOverflow: 'ellipsis', overflow: 'hidden', color: 'var(--primary)' }}>{url}</div>
       </div>
-      <div style={{ fontWeight: 800, color: 'var(--error)', fontSize: '1rem', paddingLeft: '1rem' }}>{percentage}</div>
+      <div style={{ fontWeight: 800, color: 'var(--error)', fontSize: '1.2rem', paddingLeft: '1rem' }}>{percentage}</div>
     </div>
   );
 }

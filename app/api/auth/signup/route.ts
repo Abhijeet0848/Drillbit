@@ -48,6 +48,9 @@ export async function POST(request: Request) {
 
     return NextResponse.json({ success: true }, { status: 201 });
   } catch (error: any) {
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    console.error('Signup error:', error);
+    return NextResponse.json({ 
+      error: error.message || 'Internal server error during signup' 
+    }, { status: 500 });
   }
 }

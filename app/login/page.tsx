@@ -42,18 +42,18 @@ export default function LoginPage() {
 
   return (
     <div className="container" style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-      <div className="glass animate-fade" style={{ padding: '3rem', width: '100%', maxWidth: '400px', background: 'white' }}>
-        <h1 style={{ fontSize: '2rem', marginBottom: '1.5rem', textAlign: 'center' }}>Login</h1>
-        {error && <div style={{ color: 'var(--error)', background: '#ffebee', padding: '0.75rem', borderRadius: '8px', marginBottom: '1rem', fontSize: '0.9rem' }}>{error}</div>}
+      <div className="glass-panel animate-fade" style={{ padding: '3rem', width: '100%', maxWidth: '450px' }}>
+        <h1 style={{ fontSize: '2.5rem', marginBottom: '1.5rem', textAlign: 'center', fontWeight: 800 }} className="gradient-text">Welcome Back</h1>
+        {error && <div style={{ color: 'var(--error)', background: 'hsla(350, 80%, 55%, 0.1)', border: '1px solid var(--error)', padding: '0.75rem', borderRadius: '8px', marginBottom: '1rem', fontSize: '0.9rem', fontWeight: 600 }}>{error}</div>}
         <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
           <div>
-            <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 600 }}>Email</label>
-            <input type="email" name="email" required placeholder="prof.abhijeet@university.edu" style={{ width: '100%', padding: '0.75rem', borderRadius: '8px', border: '1px solid #ddd' }} />
+            <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 600, color: 'var(--text-main)' }}>Email</label>
+            <input type="email" name="email" className="input-field" required placeholder="prof.abhijeet@university.edu" style={{ width: '100%' }} />
           </div>
           <div>
-            <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 600 }}>Password</label>
+            <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 600, color: 'var(--text-main)' }}>Password</label>
             <div style={{ position: 'relative' }}>
-              <input type={showPassword ? "text" : "password"} name="password" required placeholder="••••••••" style={{ width: '100%', padding: '0.75rem', paddingRight: '2.5rem', borderRadius: '8px', border: '1px solid #ddd' }} />
+              <input type={showPassword ? "text" : "password"} name="password" className="input-field" required placeholder="••••••••" style={{ width: '100%', paddingRight: '2.5rem' }} />
               <button 
                 type="button" 
                 onClick={() => setShowPassword(!showPassword)}
@@ -64,7 +64,7 @@ export default function LoginPage() {
               </button>
             </div>
           </div>
-          <button type="submit" disabled={loading} className="btn btn-primary" style={{ width: '100%', padding: '1rem', opacity: loading ? 0.7 : 1 }}>{loading ? 'Logging in...' : 'Login to Dashboard'}</button>
+          <button type="submit" disabled={loading} className="btn btn-primary hover-lift glow-active" style={{ width: '100%', padding: '1rem', opacity: loading ? 0.7 : 1, fontSize: '1.1rem' }}>{loading ? 'Logging in...' : 'Login to Dashboard'}</button>
         </form>
         <p style={{ textAlign: 'center', marginTop: '1.5rem', color: 'var(--text-muted)' }}>
           Don't have an account? <Link href="/signup" style={{ color: 'var(--accent)', fontWeight: 600, textDecoration: 'none' }}>Sign Up</Link>

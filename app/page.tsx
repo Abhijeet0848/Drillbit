@@ -11,25 +11,24 @@ export default function Home() {
       <Features />
       
       {/* Trust Section */}
-      <section style={{ padding: '6rem 2rem', textAlign: 'center', background: 'var(--bg-main)' }}>
+      <section style={{ padding: '4rem 2rem', textAlign: 'center', background: 'var(--bg-surface)', borderTop: '1px solid var(--glass-border)', borderBottom: '1px solid var(--glass-border)' }}>
         <div className="container">
-          <p style={{ textTransform: 'uppercase', letterSpacing: '2px', color: 'var(--text-muted)', fontSize: '0.9rem', marginBottom: '3rem' }}>
+          <p style={{ textTransform: 'uppercase', letterSpacing: '3px', color: 'var(--text-muted)', fontSize: '0.9rem', marginBottom: '3rem', fontWeight: 700 }}>
             Trusted by Excellence
           </p>
           <div style={{ 
             display: 'flex', 
-            justifyContent: 'space-around', 
+            justifyContent: 'center', 
             alignItems: 'center', 
             flexWrap: 'wrap', 
-            gap: '3rem',
-            opacity: 0.6,
-            filter: 'grayscale(100%)'
+            gap: '4rem',
+            opacity: 0.5,
           }}>
              {/* Mock Institution Logos */}
-             <div style={{ fontSize: '1.5rem', fontWeight: 700 }}>IIT DELHI</div>
-             <div style={{ fontSize: '1.5rem', fontWeight: 700 }}>JNU</div>
-             <div style={{ fontSize: '1.5rem', fontWeight: 700 }}>IIM BANGALORE</div>
-             <div style={{ fontSize: '1.5rem', fontWeight: 700 }}>BITS PILANI</div>
+             <div style={{ fontSize: '1.25rem', fontWeight: 800, color: 'var(--text-main)' }}>IIT DELHI</div>
+             <div style={{ fontSize: '1.25rem', fontWeight: 800, color: 'var(--text-main)' }}>JNU</div>
+             <div style={{ fontSize: '1.25rem', fontWeight: 800, color: 'var(--text-main)' }}>IIM BANGALORE</div>
+             <div style={{ fontSize: '1.25rem', fontWeight: 800, color: 'var(--text-main)' }}>BITS PILANI</div>
           </div>
         </div>
       </section>

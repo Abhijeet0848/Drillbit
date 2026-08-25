@@ -139,24 +139,19 @@ export default function UploadPage() {
 
   return (
     <div className="animate-fade">
-      <header className="page-header" style={{ marginBottom: '2rem' }}>
-        <h1 style={{ fontSize: '2rem', marginBottom: '0.4rem' }}>Platinum Scan</h1>
-        <p style={{ color: 'var(--text-muted)' }}>Choose your method for multi-platform analysis and integrity verification.</p>
+      <header className="page-header" style={{ marginBottom: '3rem' }}>
+        <h1 style={{ fontSize: '2.5rem', marginBottom: '0.4rem' }} className="gradient-text">Platinum Scan</h1>
+        <p style={{ color: 'var(--text-muted)', fontSize: '1.05rem' }}>Choose your method for multi-platform analysis and integrity verification.</p>
       </header>
 
       {/* Tabs */}
-      <div className="tab-container" style={{ display: 'flex', gap: '0.75rem', marginBottom: '2rem', flexWrap: 'wrap' }}>
+      <div className="tab-container" style={{ display: 'flex', gap: '1rem', marginBottom: '2.5rem', flexWrap: 'wrap' }}>
         <TabButton active={activeTab === 'single'} onClick={() => { setActiveTab('single'); setFiles([]); }} label="Single Analysis" icon="📄" />
         <TabButton active={activeTab === 'bulk'} onClick={() => { setActiveTab('bulk'); setFiles([]); }} label="Bulk Engine" icon="📚" />
         <TabButton active={activeTab === 'text'} onClick={() => { setActiveTab('text'); setFiles([]); }} label="Secure Paste" icon="✍️" />
       </div>
 
-      <div className="glass upload-card" style={{ 
-        padding: '2.5rem', 
-        background: 'var(--bg-card)', 
-        borderRadius: '24px',
-        border: '1px solid var(--glass-border)'
-      }}>
+      <div className="glass-panel upload-card" style={{ padding: '3rem' }}>
         {!isUploading ? (
           <div className="upload-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 300px', gap: '2.5rem' }}>
             <div className="dropzone" style={{ 
@@ -172,18 +167,14 @@ export default function UploadPage() {
             }}>
               {activeTab === 'text' ? (
                 <textarea 
-                  placeholder="Paste context for secure analysis..."
+                  placeholder="Paste content for secure analysis..."
                   value={pastedText}
                   onChange={(e) => setPastedText(e.target.value)}
+                  className="input-field"
                   style={{ 
                     width: '100%', 
                     height: '100%', 
-                    border: 'none', 
-                    outline: 'none', 
                     resize: 'none',
-                    fontSize: '1rem',
-                    background: 'transparent',
-                    color: 'var(--text-main)',
                     minHeight: '200px'
                   }}
                 />
@@ -203,7 +194,7 @@ export default function UploadPage() {
                     onChange={handleFileChange}
                     style={{ display: 'none' }}
                   />
-                  <button className="btn btn-accent" style={{ margin: '0 auto' }} onClick={() => document.getElementById('fileInput')?.click()}>
+                  <button className="btn btn-primary hover-lift" style={{ margin: '0 auto' }} onClick={() => document.getElementById('fileInput')?.click()}>
                     Browse Files
                   </button>
                 </>
@@ -212,20 +203,20 @@ export default function UploadPage() {
 
             <div className="upload-options" style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
               <div>
-                <label style={{ fontSize: '0.8rem', fontWeight: 700, display: 'block', marginBottom: '0.5rem', textTransform: 'uppercase', color: 'var(--text-muted)' }}>Precision</label>
-                <select style={{ width: '100%', padding: '0.85rem', borderRadius: '12px', border: '1px solid var(--glass-border)', background: 'var(--bg-card)', color: 'var(--text-main)' }}>
+                <label style={{ fontSize: '0.85rem', fontWeight: 700, display: 'block', marginBottom: '0.75rem', textTransform: 'uppercase', color: 'var(--text-muted)', letterSpacing: '0.05em' }}>Precision Engine</label>
+                <select className="input-field" style={{ width: '100%', padding: '1rem' }}>
                   <option>Standard Search</option>
                   <option>Deep Neural Search</option>
                   <option>Institutional Archives</option>
                 </select>
               </div>
               <button 
-                className="btn btn-primary" 
-                style={{ width: '100%', marginTop: 'auto', padding: '1.25rem' }}
+                className="btn btn-primary hover-lift glow-active" 
+                style={{ width: '100%', marginTop: 'auto', padding: '1.25rem', fontSize: '1.1rem' }}
                 onClick={startAnalysis}
                 disabled={(activeTab === 'text' && !pastedText) || (activeTab !== 'text' && files.length === 0)}
               >
-                Launch Analysis
+                Launch Analysis 🚀
               </button>
             </div>
           </div>
@@ -272,19 +263,19 @@ export default function UploadPage() {
 
 function TabButton({ active, label, icon, onClick }: { active: boolean, label: string, icon: string, onClick: () => void }) {
   return (
-    <button onClick={onClick} style={{
-      padding: '0.85rem 1.75rem',
-      borderRadius: '14px',
-      background: active ? 'var(--primary)' : 'var(--bg-card)',
+    <button className="hover-lift" onClick={onClick} style={{
+      padding: '1rem 2rem',
+      borderRadius: '16px',
+      background: active ? 'linear-gradient(135deg, var(--primary), var(--accent))' : 'var(--bg-surface)',
       color: active ? 'white' : 'var(--text-muted)',
-      fontWeight: 600,
+      fontWeight: 700,
       cursor: 'pointer',
       display: 'flex',
       alignItems: 'center',
-      gap: '0.6rem',
-      boxShadow: active ? '0 10px 20px -5px rgba(10,37,64,0.3)' : 'none',
+      gap: '0.75rem',
+      boxShadow: active ? '0 8px 20px -5px var(--accent-glow)' : 'none',
       transition: 'var(--transition)',
-      border: active ? 'none' : '1px solid var(--glass-border)'
+      border: active ? '1px solid transparent' : '1px solid var(--glass-border)'
     }}>
       <span>{icon}</span>
       {label}
