@@ -80,11 +80,11 @@ export default function SignupPage() {
           </div>
           <button type="submit" disabled={loading} className="form-submit-btn" style={{ opacity: loading ? 0.7 : 1 }}>{loading ? 'Signing up...' : 'Sign Up'}</button>
         </form>
-        <p style={{ textAlign: 'center', marginTop: '1.5rem', color: 'var(--text-muted)' }}>
-          Already have an account? <Link href="/login" style={{ color: 'var(--primary)', fontWeight: 600, textDecoration: 'none' }}>Login</Link>
+        <p style={{ textAlign: 'center', marginTop: '1.5rem', color: 'var(--text-muted)', fontWeight: 600 }}>
+          Already have an account? <Link href="/login" style={{ color: 'var(--primary)', fontWeight: 700, textDecoration: 'none' }}>Login</Link>
         </p>
         <p style={{ textAlign: 'center', marginTop: '1rem' }}>
-           <Link href="/" style={{ color: 'var(--text-muted)', fontSize: '0.9rem', textDecoration: 'none' }}>&larr; Back to Home</Link>
+           <Link href="/" style={{ color: 'var(--text-muted)', fontSize: '0.9rem', fontWeight: 600, textDecoration: 'none' }}>&larr; Back to Home</Link>
         </p>
       </div>
     </div>
