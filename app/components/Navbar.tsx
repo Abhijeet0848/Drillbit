@@ -52,9 +52,9 @@ export default async function Navbar() {
         {/* Navigation Links */}
         <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
           <Link href="/" className="nav-link">Home</Link>
-          <Link href="#features" className="nav-link">Features</Link>
-          <Link href="#products" className="nav-link">Products</Link>
-          <Link href="#contact" className="nav-link">Contact</Link>
+          <Link href="/#features" className="nav-link">Features</Link>
+          <Link href="/#products" className="nav-link">Products</Link>
+          <Link href="/#contact" className="nav-link">Contact</Link>
         </div>
 
         {/* Actions */}
