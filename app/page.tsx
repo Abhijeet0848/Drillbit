@@ -11,7 +11,10 @@ export default function Home() {
         <Radar 
           color="#3b82f6" 
           speed={0.8}
-          scale={1.5}
+          scale={0.55}
+          ringCount={8.0}
+          spokeCount={12.0}
+          brightness={1.1}
           enableMouseInteraction={true}
         />
       </div>
