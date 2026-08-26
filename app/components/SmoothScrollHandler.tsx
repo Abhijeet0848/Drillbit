@@ -4,6 +4,16 @@ import { useEffect } from 'react';
 
 export default function SmoothScrollHandler() {
   useEffect(() => {
+    // Disable automatic browser scroll restoration on refresh so page stays at top
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+
+    // Scroll to top on initial page load / refresh unless user explicitly clicked a link
+    if (!window.location.hash) {
+      window.scrollTo(0, 0);
+    }
+
     // Handle in-page smooth scrolling for anchor links
     const handleAnchorClick = (e: MouseEvent) => {
       const target = (e.target as HTMLElement).closest('a');
@@ -20,7 +30,6 @@ export default function SmoothScrollHandler() {
         if (hash === '#' || hash === '') {
           e.preventDefault();
           window.scrollTo({ top: 0, behavior: 'smooth' });
-          window.history.pushState(null, '', window.location.pathname);
           return;
         }
 
@@ -30,21 +39,9 @@ export default function SmoothScrollHandler() {
         if (element) {
           e.preventDefault();
           element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          window.history.pushState(null, '', hash);
         }
       }
     };
-
-    // Handle initial load if hash is present
-    if (window.location.hash) {
-      const targetId = window.location.hash.slice(1);
-      setTimeout(() => {
-        const element = document.getElementById(targetId);
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      }, 100);
-    }
 
     document.addEventListener('click', handleAnchorClick);
     return () => {
