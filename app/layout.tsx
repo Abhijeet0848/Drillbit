@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { ThemeProvider } from "./components/ThemeProvider";
+import SmoothScrollHandler from "./components/SmoothScrollHandler";
 
 export const metadata: Metadata = {
   title: {
@@ -42,6 +43,7 @@ export default function RootLayout({
       </head>
       <body>
         <ThemeProvider>
+          <SmoothScrollHandler />
           {children}
         </ThemeProvider>
       </body>
