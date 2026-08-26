@@ -158,6 +158,13 @@ h1, h2, h3, h4, h5, h6 {
   opacity: 0.9;
 }
 
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
 /* Utilities */
 .gradient-text {
   color: var(--text-main);
@@ -184,6 +191,19 @@ h1, h2, h3, h4, h5, h6 {
 .nav-link:hover {
   color: var(--text-main);
   background: var(--primary-light);
+}
+
+/* Responsive Navbar Navigation Controls */
+@media (max-width: 860px) {
+  .nav-desktop-links {
+    display: none !important;
+  }
+  .nav-desktop-actions {
+    display: none !important;
+  }
+  .nav-mobile-controls {
+    display: flex !important;
+  }
 }
 
 .text-gradient-subtle {

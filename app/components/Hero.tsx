@@ -2,15 +2,15 @@ import Link from 'next/link';
 
 export default function Hero() {
   return (
-    <section className="container" style={{ padding: '8rem 2rem 12rem', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
+    <section className="container" style={{ padding: 'clamp(4.5rem, 10vh, 8rem) 1.25rem clamp(5rem, 12vh, 12rem)', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
       <div style={{ maxWidth: '800px', width: '100%' }}>
-        <h1 className="animate-fade" style={{ fontSize: '4.5rem', marginBottom: '1.5rem', lineHeight: '1.1', fontWeight: 700, color: 'var(--text-main)', letterSpacing: '-0.04em' }}>
+        <h1 className="animate-fade" style={{ fontSize: 'clamp(2.3rem, 6vw, 4.5rem)', marginBottom: '1.5rem', lineHeight: '1.15', fontWeight: 700, color: 'var(--text-main)', letterSpacing: '-0.03em' }}>
           India's Preferred <br/>Plagiarism & AI Detection
         </h1>
-        <p className="animate-fade" style={{ fontSize: '1.1rem', color: 'var(--text-muted)', marginBottom: '3rem', maxWidth: '600px', margin: '0 auto 3rem', lineHeight: '1.6' }}>
+        <p className="animate-fade" style={{ fontSize: 'clamp(0.95rem, 2.5vw, 1.15rem)', color: 'var(--text-muted)', marginBottom: '2.5rem', maxWidth: '600px', margin: '0 auto 2.5rem', lineHeight: '1.6' }}>
           Ensure academic integrity and research excellence with our enterprise-grade detection suite. Trusted by 2000+ institutions worldwide.
         </p>
-        <div className="animate-fade" style={{ display: 'flex', gap: '1rem', justifyContent: 'center' }}>
+        <div className="animate-fade" style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
           <Link href="/signup" className="btn btn-primary hover-lift" style={{ padding: '0.75rem 1.5rem', textDecoration: 'none', fontSize: '1rem' }}>Get Started</Link>
           <Link href="/dashboard" className="btn btn-outline hover-lift" style={{ padding: '0.75rem 1.5rem', textDecoration: 'none', fontSize: '1rem' }}>View Demo</Link>
         </div>
