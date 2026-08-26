@@ -4,7 +4,6 @@ export default function Hero() {
   return (
     <section className="container" style={{ padding: '8rem 2rem 12rem', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
       <div style={{ maxWidth: '800px', width: '100%' }}>
-        <div style={{ padding: '0.4rem 0.8rem', background: 'var(--bg-surface)', border: '1px solid var(--glass-border)', borderRadius: '9999px', display: 'inline-block', marginBottom: '1.5rem', color: 'var(--text-muted)', fontWeight: 500, fontSize: '0.85rem' }}>✨ DrillBit 2.0 is Here</div>
         <h1 className="animate-fade" style={{ fontSize: '4.5rem', marginBottom: '1.5rem', lineHeight: '1.1', fontWeight: 700, color: 'var(--text-main)', letterSpacing: '-0.04em' }}>
           India's Preferred <br/>Plagiarism & AI Detection
         </h1>
