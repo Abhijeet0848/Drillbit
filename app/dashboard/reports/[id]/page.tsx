@@ -37,7 +37,7 @@ export default async function ReportPage({ params }: { params: Promise<{ id: str
             <span style={{ fontWeight: 600, color: 'var(--primary)' }}>ID:</span> {report._id.slice(-8).toUpperCase()} <span style={{ opacity: 0.5 }}>|</span> <span style={{ fontWeight: 600, color: 'var(--primary)' }}>Scanned:</span> {new Date(report.createdAt).toLocaleDateString()}
           </p>
         </div>
-        <div style={{ display: 'flex', gap: '1rem' }}>
+        <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
           {(simIndex > 0 || aiScore > 0) && (
             <RewriteButton reportId={report._id.toString()} />
           )}

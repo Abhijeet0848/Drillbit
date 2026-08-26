@@ -52,9 +52,9 @@ export default async function DashboardPage() {
       {/* Stats Grid */}
       <div className="animate-stagger" style={{ 
         display: 'grid', 
-        gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', 
-        gap: '1.5rem',
-        marginBottom: '3.5rem'
+        gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 200px), 1fr))', 
+        gap: 'clamp(1rem, 2vw, 1.5rem)',
+        marginBottom: 'clamp(2rem, 4vh, 3.5rem)'
       }}>
         {stats.map((s, i) => (
           <div key={i} className="glass-panel hover-lift" style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column' }}>

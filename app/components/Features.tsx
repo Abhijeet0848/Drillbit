@@ -25,38 +25,39 @@ export default function Features() {
   ];
 
   return (
-    <section id="features" style={{ padding: '8rem 2rem', background: 'transparent' }}>
+    <section id="features" style={{ padding: 'clamp(4rem, 8vh, 8rem) clamp(1rem, 4vw, 2rem)', background: 'transparent' }}>
       <div className="container">
-        <div style={{ textAlign: 'center', marginBottom: '5rem' }}>
-          <h2 style={{ fontSize: '3rem', marginBottom: '1rem', fontWeight: 700, letterSpacing: '-0.03em' }}>Unparalleled Features</h2>
-          <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem' }}>State-of-the-art tools designed for the modern academic landscape.</p>
+        <div style={{ textAlign: 'center', marginBottom: 'clamp(2.5rem, 6vh, 5rem)' }}>
+          <h2 style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', marginBottom: '1rem', fontWeight: 700, letterSpacing: '-0.03em', color: 'var(--text-main)' }}>Unparalleled Features</h2>
+          <p style={{ color: 'var(--text-muted)', fontSize: 'clamp(0.95rem, 2vw, 1.1rem)' }}>State-of-the-art tools designed for the modern academic landscape.</p>
         </div>
         <div style={{ 
           display: 'grid', 
-          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', 
-          gap: '2rem' 
+          gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', 
+          gap: 'clamp(1rem, 3vw, 2rem)' 
         }}>
           {features.map((f, i) => (
             <div key={i} className="glass-panel hover-lift" style={{ 
-              padding: '3rem 2rem',
+              padding: 'clamp(1.75rem, 4vw, 3rem) clamp(1.25rem, 3vw, 2rem)',
               textAlign: 'center',
               display: 'flex',
               flexDirection: 'column',
-              alignItems: 'center'
+              alignItems: 'center',
+              borderRadius: '16px'
             }}>
               <div style={{ 
                 marginBottom: '1.5rem',
                 background: 'transparent',
-                width: '60px',
-                height: '60px',
+                width: '56px',
+                height: '56px',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 borderRadius: '12px',
                 border: '1px solid var(--glass-border)'
               }}>{f.icon}</div>
-              <h3 style={{ fontSize: '1.25rem', marginBottom: '1rem', color: 'var(--text-main)', fontWeight: 600 }}>{f.title}</h3>
-              <p style={{ color: 'var(--text-muted)', lineHeight: '1.5', fontSize: '0.95rem' }}>{f.desc}</p>
+              <h3 style={{ fontSize: '1.2rem', marginBottom: '0.75rem', color: 'var(--text-main)', fontWeight: 600 }}>{f.title}</h3>
+              <p style={{ color: 'var(--text-muted)', lineHeight: '1.5', fontSize: '0.92rem' }}>{f.desc}</p>
             </div>
           ))}
         </div>

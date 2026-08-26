@@ -51,9 +51,9 @@ export default function Products() {
   ];
 
   return (
-    <section id="products" style={{ padding: '8rem 2rem 6rem', background: 'transparent' }}>
+    <section id="products" style={{ padding: 'clamp(4rem, 8vh, 8rem) clamp(1rem, 4vw, 2rem) 4rem', background: 'transparent' }}>
       <div className="container" style={{ maxWidth: '1200px', margin: '0 auto' }}>
-        <div style={{ textAlign: 'center', marginBottom: '4.5rem' }}>
+        <div style={{ textAlign: 'center', marginBottom: 'clamp(2.5rem, 5vh, 4.5rem)' }}>
           <div style={{
             display: 'inline-flex',
             alignItems: 'center',
@@ -71,18 +71,18 @@ export default function Products() {
           }}>
             Solutions Portfolio
           </div>
-          <h2 style={{ fontSize: '3rem', marginBottom: '1rem', fontWeight: 700, letterSpacing: '-0.03em', color: 'var(--text-main)' }}>
+          <h2 style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', marginBottom: '1rem', fontWeight: 700, letterSpacing: '-0.03em', color: 'var(--text-main)' }}>
             Engineered for Modern Integrity
           </h2>
-          <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem', maxWidth: '600px', margin: '0 auto' }}>
+          <p style={{ color: 'var(--text-muted)', fontSize: 'clamp(0.95rem, 2vw, 1.1rem)', maxWidth: '600px', margin: '0 auto' }}>
             Tailored software solutions for universities, publishers, and enterprise research teams.
           </p>
         </div>
 
         <div style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-          gap: '2rem'
+          gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))',
+          gap: 'clamp(1rem, 3vw, 2rem)'
         }}>
           {products.map((p, i) => (
             <div 

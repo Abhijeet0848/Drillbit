@@ -162,7 +162,7 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 1.25rem;
+  padding: 0 clamp(1rem, 4vw, 2rem);
 }
 
 /* Utilities */
@@ -193,7 +193,7 @@ h1, h2, h3, h4, h5, h6 {
   background: var(--primary-light);
 }
 
-/* Responsive Navbar Navigation Controls */
+/* Responsive Navbar & Navigation Controls */
 @media (max-width: 860px) {
   .nav-desktop-links {
     display: none !important;
@@ -203,6 +203,23 @@ h1, h2, h3, h4, h5, h6 {
   }
   .nav-mobile-controls {
     display: flex !important;
+  }
+}
+
+/* Responsive Table & Overflow Helpers */
+.table-responsive-container {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+@media (max-width: 640px) {
+  .btn {
+    padding: 0.55rem 1rem;
+    font-size: 0.85rem;
+  }
+  .glass-panel {
+    padding: 1.25rem !important;
   }
 }
 

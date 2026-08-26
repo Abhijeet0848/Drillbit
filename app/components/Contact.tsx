@@ -4,9 +4,9 @@ import { Mail, Phone, MapPin, Send, Clock, ShieldCheck } from 'lucide-react';
 
 export default function Contact() {
   return (
-    <section id="contact" style={{ padding: '6rem 2rem 8rem', background: 'transparent' }}>
+    <section id="contact" style={{ padding: 'clamp(4rem, 8vh, 6rem) clamp(1rem, 4vw, 2rem) clamp(4rem, 8vh, 8rem)', background: 'transparent' }}>
       <div className="container" style={{ maxWidth: '1200px', margin: '0 auto' }}>
-        <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
+        <div style={{ textAlign: 'center', marginBottom: 'clamp(2rem, 5vh, 4rem)' }}>
           <div style={{
             display: 'inline-flex',
             alignItems: 'center',
@@ -24,23 +24,23 @@ export default function Contact() {
           }}>
             Get In Touch
           </div>
-          <h2 style={{ fontSize: '3rem', marginBottom: '1rem', fontWeight: 700, letterSpacing: '-0.03em', color: 'var(--text-main)' }}>
+          <h2 style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', marginBottom: '1rem', fontWeight: 700, letterSpacing: '-0.03em', color: 'var(--text-main)' }}>
             Connect with Our Team
           </h2>
-          <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem', maxWidth: '600px', margin: '0 auto' }}>
+          <p style={{ color: 'var(--text-muted)', fontSize: 'clamp(0.95rem, 2vw, 1.1rem)', maxWidth: '600px', margin: '0 auto' }}>
             Request an institutional trial, schedule an interactive walkthrough, or get technical support.
           </p>
         </div>
 
         <div style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-          gap: '2.5rem',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))',
+          gap: 'clamp(1.5rem, 4vw, 2.5rem)',
           alignItems: 'stretch'
         }}>
           {/* Contact Details Card */}
           <div className="glass-panel" style={{
-            padding: '3rem 2.5rem',
+            padding: 'clamp(1.75rem, 4vw, 3rem) clamp(1.25rem, 4vw, 2.5rem)',
             borderRadius: '20px',
             display: 'flex',
             flexDirection: 'column',

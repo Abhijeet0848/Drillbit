@@ -26,24 +26,54 @@ export default function DashboardContainer({
         top: 0,
         left: 0,
         right: 0,
-        height: '60px',
-        background: 'var(--bg-card)',
+        height: '64px',
+        background: 'var(--glass-bg)',
+        backdropFilter: 'blur(16px)',
+        WebkitBackdropFilter: 'blur(16px)',
         borderBottom: '1px solid var(--glass-border)',
         zIndex: 100,
-        display: 'flex',
+        display: 'none',
         alignItems: 'center',
-        padding: '0 1rem',
+        padding: '0 1.25rem',
         justifyContent: 'space-between'
       }}>
-        <div style={{ fontWeight: 800, fontSize: '1.2rem', color: 'var(--primary)' }}>
-          Drill<span style={{ color: 'var(--accent)' }}>Bit</span>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
+          <div style={{
+            width: '26px',
+            height: '26px',
+            borderRadius: '6px',
+            background: 'linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            color: '#fff'
+          }}>
+            <Drill size={14} />
+          </div>
+          <span style={{ fontWeight: 800, fontSize: '1.15rem', color: 'var(--text-main)' }}>
+            DrillBit
+          </span>
         </div>
-        <button 
-          onClick={() => setSidebarOpen(!isSidebarOpen)}
-          style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--text-main)' }}
-        >
-          {isSidebarOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+          <ThemeToggle compact={true} />
+          <button 
+            onClick={() => setSidebarOpen(!isSidebarOpen)}
+            aria-label="Toggle Dashboard Menu"
+            style={{ 
+              background: 'var(--primary-light)', 
+              border: '1px solid var(--glass-border)', 
+              borderRadius: '8px', 
+              padding: '0.45rem', 
+              cursor: 'pointer', 
+              color: 'var(--text-main)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}
+          >
+            {isSidebarOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
+        </div>
       </header>
 
       {/* Sidebar Overlay */}
@@ -136,7 +166,7 @@ export default function DashboardContainer({
       <style jsx global>{`
         @media (max-width: 768px) {
           :root {
-            --mobile-nav-height: 60px;
+            --mobile-nav-height: 64px;
           }
           .mobile-only { display: flex !important; }
           .sidebar {

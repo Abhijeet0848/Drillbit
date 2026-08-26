@@ -2,13 +2,13 @@ import Link from 'next/link';
 
 export default function Footer() {
   return (
-    <footer style={{ background: 'var(--bg-surface)', borderTop: '1px solid var(--glass-border)', color: 'var(--text-main)', padding: '6rem 2rem 2rem' }}>
+    <footer style={{ background: 'var(--bg-surface)', borderTop: '1px solid var(--glass-border)', color: 'var(--text-main)', padding: 'clamp(3rem, 6vh, 6rem) clamp(1rem, 4vw, 2rem) 2rem' }}>
       <div className="container">
         <div style={{ 
           display: 'grid', 
-          gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', 
-          gap: '4rem',
-          marginBottom: '4rem'
+          gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 220px), 1fr))', 
+          gap: 'clamp(2rem, 4vw, 4rem)',
+          marginBottom: 'clamp(2.5rem, 5vh, 4rem)'
         }}>
           <div>
             <div style={{ fontSize: '1.4rem', fontWeight: 700, marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.75rem', color: 'var(--text-main)' }}>
